@@ -1,15 +1,29 @@
-document
-    .getElementById("previous")
-    .onclick = () => {
+import {
+    nextSlide,
+    previousSlide
+}
+from "/static/common/api.js";
 
-        alert("Previous");
-
-    };
 
 document
     .getElementById("next")
-    .onclick = () => {
+    .onclick = async () => {
 
-        alert("Next");
+        const state =
+            await nextSlide();
+
+        console.log(state);
+
+    };
+
+
+document
+    .getElementById("previous")
+    .onclick = async () => {
+
+        const state =
+            await previousSlide();
+
+        console.log(state);
 
     };

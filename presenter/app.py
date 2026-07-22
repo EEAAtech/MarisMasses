@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-
+from presenter.api import router as api_router
 from presenter.config import STATIC_DIR
 from presenter.routes import register_routes
 
@@ -22,6 +22,7 @@ def create_app() -> FastAPI:
     )
 
     register_routes(app)
+    app.include_router(api_router)
 
     @app.get("/")
     async def root():
