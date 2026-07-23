@@ -4,7 +4,7 @@ import {
 from "/static/common/api.js";
 
 
-async function loadState() {
+async function updateScreen() {
 
     const state =
         await getState();
@@ -16,4 +16,23 @@ async function loadState() {
 }
 
 
-loadState();
+updateScreen();
+
+const events =
+    new EventSource("/api/events");
+
+
+events.onmessage = async () => {
+
+    console.log("State changed");
+
+    await updateScreen();
+
+};
+
+
+events.onerror = () => {
+
+    console.log("SSE disconnected");
+
+};

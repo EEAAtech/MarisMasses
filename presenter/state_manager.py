@@ -2,7 +2,13 @@ from presenter.models import PresenterState
 
 
 class StateManager:
+    """
+    Maintains the current presentation state.
 
+    There is exactly one StateManager instance for the presenter.
+    All controller actions modify this object.
+    Client displays always render from this state.
+    """
     def __init__(self):
 
         self._state = PresenterState()
