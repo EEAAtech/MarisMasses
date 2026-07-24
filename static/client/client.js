@@ -1,38 +1,28 @@
 import {
-    getState
+    getCurrentSlide
 }
 from "/static/common/api.js";
 
 
-async function updateScreen() {
+async function renderSlide() {
 
-    const state =
-        await getState();
+    const slide = await getCurrentSlide();
 
     document
-        .getElementById("status")
-        .innerHTML =
-            `Current Slide : ${state.currentSlideIndex}`;
+        .getElementById("slide")
+        .textContent = slide.text;
 }
 
 
-updateScreen();
+// Initial display
+renderSlide();
 
-const events =
-    new EventSource("/api/events");
 
+// Listen for presenter updates
+const events = new EventSource("/api/events");
 
 events.onmessage = async () => {
 
-    console.log("State changed");
-
-    await updateScreen();
-
-};
-
-
-events.onerror = () => {
-
-    console.log("SSE disconnected");
+    await renderSlide();
 
 };

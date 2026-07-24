@@ -24,6 +24,14 @@ body{
 #content{
 
     text-align:center;
+    width:90%;
+}
+
+#slide{
+    white-space:pre-wrap;
+    text-align:center;
+    font-size:75pt;
+    line-height:1.3;
 }
 
 h1{

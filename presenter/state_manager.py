@@ -1,20 +1,21 @@
+"""
+Maintains the current runtime presentation state.
+"""
+
 from presenter.models import PresenterState
 
 
 class StateManager:
-    """
-    Maintains the current presentation state.
 
-    There is exactly one StateManager instance for the presenter.
-    All controller actions modify this object.
-    Client displays always render from this state.
-    """
     def __init__(self):
 
         self._state = PresenterState()
 
-    def get_state(self):
+    @property
+    def state(self):
+        return self._state
 
+    def get_state(self):
         return self._state
 
     def next_slide(self):
@@ -25,6 +26,10 @@ class StateManager:
 
         if self._state.currentSlideIndex > 0:
             self._state.currentSlideIndex -= 1
+
+    def reset_slide(self):
+
+        self._state.currentSlideIndex = 0
 
 
 state_manager = StateManager()
