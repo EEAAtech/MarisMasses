@@ -11,14 +11,17 @@ async function renderSlide() {
     document
         .getElementById("slide")
         .textContent = slide.text;
+
+    document.title =
+        slide.title;
 }
 
 
-// Initial display
+// Initial render.
 renderSlide();
 
 
-// Listen for presenter updates
+// Listen for updates from the presenter.
 const events = new EventSource("/api/events");
 
 events.onmessage = async () => {

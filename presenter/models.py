@@ -20,8 +20,10 @@ class PresenterState:
     connected clients.
     """
 
-    currentItemId: str = ""
+    currentItemIndex: int = 0
+
     currentSlideIndex: int = 0
+
     fontSize: int = 75
 
     def to_dict(self):

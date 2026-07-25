@@ -4,6 +4,7 @@ from fastapi.responses import StreamingResponse
 from presenter.events import event_manager
 from presenter.hymn_repository import hymn_repository
 from presenter.state_manager import state_manager
+from presenter.sequence_repository import sequence_repository
 
 router = APIRouter(prefix="/api")
 
@@ -22,24 +23,42 @@ async def get_slide():
     Return the currently selected slide.
     """
 
-    hymn = hymn_repository.load(DEFAULT_HYMN)
+    sequence = sequence_repository.load()
 
-    index = state_manager.state.currentSlideIndex
+    if not sequence:
 
-    if index >= hymn.slide_count():
-        index = hymn.slide_count() - 1
-        state_manager.state.currentSlideIndex = index
+        raise HTTPException(
+            status_code=404,
+            detail="Sequence is empty."
+        )
 
-    if index < 0:
-        index = 0
+    state = state_manager.state
 
-    slide = hymn.slides[index]
+    if state.currentItemIndex >= len(sequence):
+        state.currentItemIndex = len(sequence) - 1
+
+    filename = sequence[state.currentItemIndex]
+
+    hymn = hymn_repository.load(filename)
+
+    if hymn.slide_count() == 0:
+
+        raise HTTPException(
+            status_code=500,
+            detail="Hymn contains no slides."
+        )
+
+    if state.currentSlideIndex >= hymn.slide_count():
+        state.currentSlideIndex = hymn.slide_count() - 1
+
+    slide = hymn.slides[state.currentSlideIndex]
 
     return {
         "title": hymn.title,
         "label": slide.label,
         "kind": slide.kind,
-        "text": slide.text
+        "text": slide.text,
+        "slideCount": hymn.slide_count()
     }
 
 
