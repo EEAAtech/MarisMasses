@@ -81,6 +81,35 @@ async def previous_slide():
 
     return state_manager.get_state().to_dict()
 
+@router.post("/nextItem")
+async def next_item():
+    """
+    Advance to the next hymn/response.
+    """
+
+    sequence = sequence_repository.load()
+
+    state = state_manager.state
+
+    if state.currentItemIndex < len(sequence) - 1:
+        state_manager.next_item()
+
+    await event_manager.broadcast()
+
+    return state.to_dict()
+
+
+@router.post("/previousItem")
+async def previous_item():
+    """
+    Return to the previous hymn/response.
+    """
+
+    state_manager.previous_item()
+
+    await event_manager.broadcast()
+
+    return state_manager.state.to_dict()
 
 @router.get("/events")
 async def events():
