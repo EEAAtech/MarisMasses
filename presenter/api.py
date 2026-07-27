@@ -54,13 +54,44 @@ async def get_slide():
     slide = hymn.slides[state.currentSlideIndex]
 
     return {
+
         "title": hymn.title,
+        "slides": [
+        {
+            "label": slide.label,
+            "kind": slide.kind
+        }
+        for slide in hymn.slides
+        ],
         "label": slide.label,
         "kind": slide.kind,
         "text": slide.text,
         "slideCount": hymn.slide_count()
     }
 
+@router.post("/slide/{index}")
+async def select_slide(index: int):
+    """
+    Select a slide directly.
+    """
+
+    hymn = hymn_repository.load(
+        sequence_repository.load()[
+            state_manager.state.currentItemIndex
+        ]
+    )
+
+    if index < 0:
+        index = 0
+
+    if index >= hymn.slide_count():
+        index = hymn.slide_count() - 1
+
+    state_manager.set_slide(index)
+
+    await event_manager.broadcast()
+
+    return state_manager.state.to_dict()
 
 @router.post("/next")
 async def next_slide():

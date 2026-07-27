@@ -2,34 +2,64 @@ html,
 body{
 
     margin:0;
-    width:100%;
-    height:100%;
+    padding:20px;
 
-    background:#222;
+    background:#202020;
+
+    color:white;
+
+    font-family:Arial;
 }
 
-#buttons{
+#title{
 
-    display:grid;
+    text-align:center;
 
-    grid-template-columns:1fr 1fr;
+    font-size:36px;
 
-    grid-template-rows:1fr 1fr;
+    font-weight:bold;
 
-    gap:15px;
-
-    padding:15px;
-
-    height:100%;
-
-    box-sizing:border-box;
+    margin-bottom:30px;
 }
 
-button{
+#slideButtons{
 
-    font-size:48px;
+    display:flex;
 
-    border-radius:18px;
+    flex-wrap:wrap;
 
-    cursor:pointer;
+    gap:12px;
+
+    justify-content:center;
+
+    margin-bottom:30px;
+}
+
+#slideButtons button{
+
+    width:90px;
+
+    height:90px;
+
+    font-size:32px;
+}
+
+#navigation,
+#fontButtons{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:20px;
+}
+
+#navigation button,
+#fontButtons button{
+
+    flex:1;
+
+    height:90px;
+
+    font-size:28px;
 }

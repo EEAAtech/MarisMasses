@@ -1,47 +1,80 @@
 import {
-    nextSlide,
-    previousSlide,
+
+    getCurrentSlide,
+
     nextItem,
-    previousItem
+
+    previousItem,
+
+    selectSlide
+
 }
 from "/static/common/api.js";
 
 
-// Previous Verse
+async function refreshController(){
+
+    const slide =
+        await getCurrentSlide();
+
+    document
+        .getElementById("title")
+        .textContent =
+        slide.title;
+
+    const panel =
+        document.getElementById("slideButtons");
+
+    panel.innerHTML="";
+
+    slide.slides.forEach(
+
+        (item,index)=>{
+
+            const button =
+                document.createElement("button");
+
+            button.textContent =
+                item.label;
+
+            button.onclick =
+                async ()=>{
+
+                    await selectSlide(index);
+
+                };
+
+            panel.appendChild(button);
+
+        }
+
+    );
+
+}
+
+
 document
-    .getElementById("previous")
-    .onclick = async () => {
+.getElementById("nextItem")
+.onclick =
+async()=>{
 
-        await previousSlide();
+    await nextItem();
 
-    };
+    await refreshController();
+
+};
 
 
-// Next Verse
 document
-    .getElementById("next")
-    .onclick = async () => {
+.getElementById("previousItem")
+.onclick =
+async()=>{
 
-        await nextSlide();
+    await previousItem();
 
-    };
+    await refreshController();
 
-
-// Previous Hymn
-document
-    .getElementById("previousItem")
-    .onclick = async () => {
-
-        await previousItem();
-
-    };
+};
 
 
-// Next Hymn
-document
-    .getElementById("nextItem")
-    .onclick = async () => {
-
-        await nextItem();
-
-    };
+refreshController();

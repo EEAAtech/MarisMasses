@@ -1,6 +1,6 @@
 3. GO TELL EVERYONE ( Lk. 4 & Mt. 10)
 
-Ch: He sent me to give the good
+CH: He sent me to give the good
 news to the poor
 Tell prisoners that they are
 prisoners no more

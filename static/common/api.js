@@ -52,3 +52,16 @@ export async function previousItem() {
 
     return await response.json();
 }
+
+export async function selectSlide(index){
+
+    const response =
+        await fetch(`/api/slide/${index}`,{
+
+            method:"POST"
+
+        });
+
+    return await response.json();
+
+}
