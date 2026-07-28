@@ -6,12 +6,6 @@ from presenter.models import PresenterState
 
 
 class StateManager:
-    """
-   Stores the current presenter state.
-
-    There is exactly one StateManager shared by all
-    connected browsers.
-    """
 
     def __init__(self):
 
@@ -25,16 +19,22 @@ class StateManager:
         return self._state
 
     def set_slide(self, index: int):
-        """
-        Select the requested slide.
-        """
 
         self._state.currentSlideIndex = index
+
+    def show_holding(self):
+
+        self._state.holdingScreen = True
+
+    def hide_holding(self):
+
+        self._state.holdingScreen = False
 
     def next_item(self):
 
         self._state.currentItemIndex += 1
         self._state.currentSlideIndex = 0
+        self._state.holdingScreen = False
 
     def previous_item(self):
 
@@ -42,6 +42,13 @@ class StateManager:
             self._state.currentItemIndex -= 1
 
         self._state.currentSlideIndex = 0
+        self._state.holdingScreen = False
 
+    def is_holding(self):
+        """
+        True if the holding screen is currently displayed.
+        """
+
+        return self._state.holdingScreen
 
 state_manager = StateManager()

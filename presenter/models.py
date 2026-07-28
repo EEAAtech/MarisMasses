@@ -26,6 +26,9 @@ class PresenterState:
 
     fontSize: int = 75
 
+    # True while the holding image is displayed.
+    holdingScreen: bool = False
+
     def to_dict(self):
         """Return the state as a serializable dictionary."""
         return asdict(self)

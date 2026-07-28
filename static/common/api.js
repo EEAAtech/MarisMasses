@@ -65,3 +65,26 @@ export async function selectSlide(index){
     return await response.json();
 
 }
+
+export async function showHolding(){
+
+    await fetch("/api/holding",{
+
+        method:"POST"
+
+    });
+
+}
+
+export async function hideHolding(){
+
+    const response =
+        await fetch("/api/hideHolding",{
+
+            method:"POST"
+
+        });
+
+    return await response.json();
+
+}

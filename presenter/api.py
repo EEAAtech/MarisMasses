@@ -53,9 +53,35 @@ async def get_slide():
 
     slide = hymn.slides[state.currentSlideIndex]
 
+
+    # Even while the holding screen is displayed, return the
+    # complete controller state so the controller can continue
+    # to render the hymn title, verse buttons and active verse.
+    if state.holdingScreen:
+
+        return {
+
+            "holding": True,
+
+            "image": "/static/images/holding.jpg",
+
+            "title": hymn.title,
+
+            "slides": [
+                {
+                    "label": s.label,
+                    "kind": s.kind
+                }
+                for s in hymn.slides
+            ],
+
+            "currentSlideIndex": state.currentSlideIndex
+        }
+
     return {
 
         "title": hymn.title,
+        "currentSlideIndex": state.currentSlideIndex,
         "slides": [
         {
             "label": slide.label,
@@ -66,7 +92,8 @@ async def get_slide():
         "label": slide.label,
         "kind": slide.kind,
         "text": slide.text,
-        "slideCount": hymn.slide_count()
+        "slideCount": hymn.slide_count(),
+        "holding": False
     }
 
 @router.post("/slide/{index}")
@@ -154,3 +181,21 @@ async def events():
         stream(),
         media_type="text/event-stream"
     )
+
+@router.post("/holding")
+async def holding():
+
+    state_manager.show_holding()
+
+    await event_manager.broadcast()
+
+    return state_manager.state.to_dict()
+
+@router.post("/hideHolding")
+async def hide_holding():
+
+    state_manager.hide_holding()
+
+    await event_manager.broadcast()
+
+    return state_manager.state.to_dict()

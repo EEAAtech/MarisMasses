@@ -63,3 +63,13 @@ body{
 
     font-size:28px;
 }
+
+.selected{
+
+    background:#2d7cff;
+
+    color:white;
+
+    border:4px solid white;
+
+}

@@ -6,10 +6,18 @@ import {
 
     previousItem,
 
-    selectSlide
+    selectSlide,
+
+    showHolding,
+
+    hideHolding
+
 
 }
 from "/static/common/api.js";
+
+
+let currentSlideIndex = -1;
 
 
 async function refreshController(){
@@ -25,30 +33,52 @@ async function refreshController(){
     const panel =
         document.getElementById("slideButtons");
 
-    panel.innerHTML="";
+    if(panel.childElementCount !== slide.slides.length){
 
-    slide.slides.forEach(
+        panel.innerHTML="";
 
-        (item,index)=>{
+        slide.slides.forEach(
 
-            const button =
-                document.createElement("button");
+            (item,index)=>{
 
-            button.textContent =
-                item.label;
+                const button =
+                    document.createElement("button");
 
-            button.onclick =
-                async ()=>{
+                button.textContent =
+                    item.label;
 
-                    await selectSlide(index);
+                button.onclick =
+                    async ()=>{
 
-                };
+                        await selectSlide(index);
 
-            panel.appendChild(button);
+                        await refreshController();
+
+                    };
+
+                panel.appendChild(button);
+
+            }
+
+        );
+
+    }
+
+    [...panel.children].forEach(
+
+        (button,index)=>{
+
+            button.classList.toggle(
+                "selected",
+                index===slide.currentSlideIndex
+            );
 
         }
 
     );
+
+    currentSlideIndex =
+        slide.currentSlideIndex;
 
 }
 
@@ -58,7 +88,26 @@ document
 .onclick =
 async()=>{
 
-    await nextItem();
+    const slide =
+        await getCurrentSlide();
+
+    if(!slide.holding){
+
+        // First press:
+        // Show the holding screen.
+        await showHolding();
+
+    }
+    else{
+
+        // Second press:
+        // Advance to the next hymn.
+        await nextItem();
+
+        // Return to verse 1.
+        await hideHolding();
+
+    }
 
     await refreshController();
 
@@ -78,3 +127,13 @@ async()=>{
 
 
 refreshController();
+
+const events =
+    new EventSource("/api/events");
+
+events.onmessage =
+async ()=>{
+
+    await refreshController();
+
+};

@@ -4,27 +4,42 @@ import {
 from "/static/common/api.js";
 
 
-async function renderSlide() {
+async function renderSlide(){
 
-    const slide = await getCurrentSlide();
+    const slide =
+        await getCurrentSlide();
 
-    document
-        .getElementById("slide")
-        .textContent = slide.text;
+    const container =
+        document.getElementById("slide");
 
-    document.title =
-        slide.title;
+    if(slide.holding){
+
+        container.innerHTML =
+            `<img
+                src="${slide.image}"
+                style="
+                    width:100%;
+                    height:auto;
+                    object-fit:contain;
+                ">`;
+
+        return;
+
+    }
+
+    container.textContent =
+        slide.text;
+
 }
 
 
-// Initial render.
 renderSlide();
 
+const events =
+    new EventSource("/api/events");
 
-// Listen for updates from the presenter.
-const events = new EventSource("/api/events");
-
-events.onmessage = async () => {
+events.onmessage =
+async ()=>{
 
     await renderSlide();
 
