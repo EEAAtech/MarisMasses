@@ -37,7 +37,59 @@ async def get_slide():
     if state.currentItemIndex >= len(sequence):
         state.currentItemIndex = len(sequence) - 1
 
-    filename = sequence[state.currentItemIndex]
+    item = sequence[state.currentItemIndex]
+
+    # Inline response
+    if item["type"] == "response":
+
+        # If we're between presentation items, show the holding image.
+        if state.holdingScreen:
+
+            return {
+
+                "holding": True,
+
+                "image": "/static/images/holding.jpg",
+
+                "title": item["title"],
+
+                "currentSlideIndex": 0,
+
+                "slides": [
+                    {
+                        "label": "1",
+                        "kind": "response"
+                    }
+                ]
+            }
+
+        # Otherwise display the response text.
+        return {
+
+            "holding": False,
+
+            "title": item["title"],
+
+            "currentSlideIndex": 0,
+
+            "slides": [
+                {
+                    "label": "1",
+                    "kind": "response"
+                }
+            ],
+
+            "label": "1",
+
+            "kind": "response",
+
+            "text": item["text"],
+
+            "slideCount": 1
+        }
+
+    # Markdown hymn
+    filename = item["file"]
 
     hymn = hymn_repository.load(filename)
 
@@ -58,7 +110,6 @@ async def get_slide():
     # complete controller state so the controller can continue
     # to render the hymn title, verse buttons and active verse.
     if state.holdingScreen:
-
         return {
 
             "holding": True,
@@ -67,19 +118,19 @@ async def get_slide():
 
             "title": hymn.title,
 
+            "currentSlideIndex": state.currentSlideIndex,
+
             "slides": [
                 {
                     "label": s.label,
                     "kind": s.kind
                 }
                 for s in hymn.slides
-            ],
-
-            "currentSlideIndex": state.currentSlideIndex
+            ]
         }
 
     return {
-
+        "holding": False,
         "title": hymn.title,
         "currentSlideIndex": state.currentSlideIndex,
         "slides": [
@@ -92,8 +143,8 @@ async def get_slide():
         "label": slide.label,
         "kind": slide.kind,
         "text": slide.text,
-        "slideCount": hymn.slide_count(),
-        "holding": False
+        "slideCount": hymn.slide_count()
+        
     }
 
 @router.post("/slide/{index}")
@@ -102,11 +153,20 @@ async def select_slide(index: int):
     Select a slide directly.
     """
 
-    hymn = hymn_repository.load(
-        sequence_repository.load()[
-            state_manager.state.currentItemIndex
-        ]
-    )
+    item = sequence_repository.load()[
+    state_manager.state.currentItemIndex
+]
+
+    # Responses have only one slide.
+    if item["type"] == "response":
+
+        state_manager.set_slide(0)
+
+        await event_manager.broadcast()
+
+        return state_manager.state.to_dict()
+
+    hymn = hymn_repository.load(item["file"])
 
     if index < 0:
         index = 0

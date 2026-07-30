@@ -30,7 +30,22 @@ class SequenceRepository:
 
             data = json.load(fp)
 
-        return data["items"]
+        items = []
+
+        for item in data["items"]:
+
+            if isinstance(item, str):
+
+                items.append({
+                    "type": "hymn",
+                    "file": item
+                })
+
+            else:
+
+                items.append(item)
+
+        return items
 
 
 sequence_repository = SequenceRepository()

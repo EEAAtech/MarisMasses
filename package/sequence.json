@@ -1,6 +1,26 @@
 {
     "items": [
-        "a.007_all_the_earth.md",
-        "go_tell_everyone.md"
+
+        {
+            "type": "hymn",
+            "file": "a.007_all_the_earth.md"
+        },
+
+        {
+            "type": "response",
+            "title": "Responsorial Psalm",
+            "text": "One thing I long for, to live in the house of the Lord."
+        },
+
+        {
+            "type": "hymn",
+            "file": "go_tell_everyone.md"
+        },
+
+        {
+            "type": "response",
+            "title": "Prayers of the Faithful",
+            "text": "Lord, graciously hear us."
+        }
     ]
 }
