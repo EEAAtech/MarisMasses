@@ -18,7 +18,7 @@ import re
 
 from presenter.models import Hymn
 from presenter.models import Slide
-
+from presenter.text_splitter import split_slide
 
 class MarkdownParser:
     """
@@ -92,25 +92,25 @@ class MarkdownParser:
                     count=1
                 ).strip()
 
-                hymn.slides.append(
+                hymn.slides.extend(
 
-                    Slide(
+                    split_slide(Slide(
                         label="Ch",
                         kind="chorus",
                         text=cleaned
-                    )
+                    ))
 
                 )
 
             else:
 
-                hymn.slides.append(
+                hymn.slides.extend(
 
-                    Slide(
+                    split_slide(Slide(
                         label=str(verse_number),
                         kind="verse",
                         text=paragraph
-                    )
+                    ))
 
                 )
 

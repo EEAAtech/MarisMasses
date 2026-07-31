@@ -12,6 +12,7 @@ from presenter.markdown_parser import MarkdownParser
 from presenter.models import Hymn
 
 
+
 class HymnRepository:
     """Provides access to hymn markdown files."""
 
