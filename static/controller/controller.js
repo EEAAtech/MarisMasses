@@ -125,8 +125,15 @@ async()=>{
 
 };
 
+document
+    .getElementById("downloadPackage")
+    .addEventListener(
+        "click",
+        downloadPackage
+    );
 
-refreshController();
+
+    refreshController();
 
 const events =
     new EventSource("/api/events");
@@ -137,3 +144,94 @@ async ()=>{
     await refreshController();
 
 };
+
+
+
+async function downloadPackage() {
+
+    const button =
+        document.getElementById(
+            "downloadPackage"
+        );
+
+    button.disabled = true;
+
+    const originalText =
+        button.textContent;
+
+    button.textContent =
+        "Downloading...";
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/download",
+                {
+                    method: "POST"
+                }
+            );
+
+        const responseText =
+            await response.text();
+
+        let data = {};
+
+        try {
+
+            data = JSON.parse(responseText);
+
+        }
+        catch {
+
+            throw new Error(
+                `Download failed: HTTP ${response.status} ` +
+                `(${response.statusText})`
+            );
+
+        }
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.detail ||
+                "Unable to download package."
+            );
+
+        }
+
+        alert(
+            `Downloaded ${data.package}`
+        );
+
+        //
+        // Reload the Controller state so the
+        // newly installed Mass appears immediately.
+        //
+        await refresh();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Package download failed:",
+            error
+        );
+
+        alert(
+            error.message
+        );
+
+    }
+
+    finally {
+
+        button.disabled = false;
+
+        button.textContent =
+            originalText;
+
+    }
+
+}
