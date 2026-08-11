@@ -20,16 +20,25 @@ class HymnRepository:
         self._parser = MarkdownParser()
         self._items_dir = PACKAGE_DIR / "items"
 
-    def load(self, filename: str) -> Hymn:
+    def load(self, filename: str, folder: str = None) -> Hymn:
         """
         Load and parse a hymn.
+
+        The folder is supplied by sequence.json.
 
         Raises FileNotFoundError if the file does not exist.
         """
 
-        path = self._items_dir / filename
+        if folder:
+
+            path = (
+                self._items_dir /
+                folder /
+                filename
+            )
+
+
 
         return self._parser.parse(path)
-
 
 hymn_repository = HymnRepository()

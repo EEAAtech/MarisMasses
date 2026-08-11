@@ -14,13 +14,13 @@ import {
 
 
 }
-from "/static/common/api.js";
+    from "/static/common/api.js";
 
 
 let currentSlideIndex = -1;
 
 
-async function refreshController(){
+async function refreshController() {
 
     const slide =
         await getCurrentSlide();
@@ -33,13 +33,13 @@ async function refreshController(){
     const panel =
         document.getElementById("slideButtons");
 
-    if(panel.childElementCount !== slide.slides.length){
+    if (panel.childElementCount !== slide.slides.length) {
 
-        panel.innerHTML="";
+        panel.innerHTML = "";
 
         slide.slides.forEach(
 
-            (item,index)=>{
+            (item, index) => {
 
                 const button =
                     document.createElement("button");
@@ -48,7 +48,7 @@ async function refreshController(){
                     item.label;
 
                 button.onclick =
-                    async ()=>{
+                    async () => {
 
                         await selectSlide(index);
 
@@ -66,11 +66,11 @@ async function refreshController(){
 
     [...panel.children].forEach(
 
-        (button,index)=>{
+        (button, index) => {
 
             button.classList.toggle(
                 "selected",
-                index===slide.currentSlideIndex
+                index === slide.currentSlideIndex
             );
 
         }
@@ -84,46 +84,46 @@ async function refreshController(){
 
 
 document
-.getElementById("nextItem")
-.onclick =
-async()=>{
+    .getElementById("nextItem")
+    .onclick =
+    async () => {
 
-    const slide =
-        await getCurrentSlide();
+        const slide =
+            await getCurrentSlide();
 
-    if(!slide.holding){
+        if (!slide.holding) {
 
-        // First press:
-        // Show the holding screen.
-        await showHolding();
+            // First press:
+            // Show the holding screen.
+            await showHolding();
 
-    }
-    else{
+        }
+        else {
 
-        // Second press:
-        // Advance to the next hymn.
-        await nextItem();
+            // Second press:
+            // Advance to the next hymn.
+            await nextItem();
 
-        // Return to verse 1.
-        await hideHolding();
+            // Return to verse 1.
+            await hideHolding();
 
-    }
+        }
 
-    await refreshController();
+        await refreshController();
 
-};
+    };
 
 
 document
-.getElementById("previousItem")
-.onclick =
-async()=>{
+    .getElementById("previousItem")
+    .onclick =
+    async () => {
 
-    await previousItem();
+        await previousItem();
 
-    await refreshController();
+        await refreshController();
 
-};
+    };
 
 document
     .getElementById("downloadPackage")
@@ -133,17 +133,17 @@ document
     );
 
 
-    refreshController();
+refreshController();
 
 const events =
     new EventSource("/api/events");
 
 events.onmessage =
-async ()=>{
+    async () => {
 
-    await refreshController();
+        await refreshController();
 
-};
+    };
 
 
 
@@ -153,6 +153,7 @@ async function downloadPackage() {
         document.getElementById(
             "downloadPackage"
         );
+
 
     button.disabled = true;
 
@@ -208,7 +209,7 @@ async function downloadPackage() {
         // Reload the Controller state so the
         // newly installed Mass appears immediately.
         //
-        await refresh();
+        await refreshController();
 
     }
 

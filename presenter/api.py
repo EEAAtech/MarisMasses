@@ -256,7 +256,12 @@ async def get_slide():
     # Markdown hymn
     filename = item["file"]
 
-    hymn = hymn_repository.load(filename)
+    folder = item.get("folder")
+
+    hymn = hymn_repository.load(
+        filename,
+        folder
+    )
 
     if hymn.slide_count() == 0:
 
