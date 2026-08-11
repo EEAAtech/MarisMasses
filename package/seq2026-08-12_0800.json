@@ -1,0 +1,22 @@
+{
+    "massDate": "2026-08-12",
+    "massTime": "08:00",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "god_is_good.md",
+            "lyrics": "Oh what love I see"
+        },
+        {
+            "type": "response",
+            "title": "Ps12",
+            "text": "Rest of 12 aug"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "go_tell_everyone.md"
+        }
+    ]
+}
