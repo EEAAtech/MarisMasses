@@ -1,0 +1,21 @@
+{
+    "massDate": "2026-08-11",
+    "massTime": "17:20",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "336._i_have_made_a_covenant.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.134_i_want_to_sing.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "005._hymn_of_glory.md"
+        }
+    ]
+}
