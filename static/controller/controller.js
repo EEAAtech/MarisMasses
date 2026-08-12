@@ -205,11 +205,7 @@ async function downloadPackage() {
             `Downloaded ${data.package}`
         );
 
-        //
-        // Reload the Controller state so the
-        // newly installed Mass appears immediately.
-        //
-        await refreshController();
+        
 
     }
 

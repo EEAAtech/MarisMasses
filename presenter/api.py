@@ -345,7 +345,8 @@ async def select_slide(index: int):
         index = hymn.slide_count() - 1
 
     state_manager.set_slide(index)
-
+    state_manager.hide_holding()
+    
     await event_manager.broadcast()
 
     return state_manager.state.to_dict()

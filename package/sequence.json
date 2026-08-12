@@ -1,27 +1,26 @@
 {
     "massDate": "2026-08-12",
-    "massTime": "14:53",
+    "massTime": "15:49",
     "items": [
         {
             "type": "hymn",
-            "folder": "OtherHymns",
-            "file": "sweetest_love_of_my_god.md",
-            "lyrics": "Sweet Love of my God\n\nIs the dearest thing to me\nall the world's treasures \ncan hold no candle to Thee\n\nIs the deepest longing of my heart\nwhat in the earth can from Thee, me part\nnay that I willest to depart"
+            "folder": "GJL",
+            "file": "a-01amchea_bapan_amkam_apoileam.md"
         },
         {
             "type": "hymn",
             "folder": "PTL",
-            "file": "162._come_and_dine.md"
+            "file": "038._glorious_in_majesty.md"
         },
         {
             "type": "response",
-            "title": "Ps 3",
-            "text": "A Psalm for 11 Aug"
+            "title": "Wonder Ps",
+            "text": "Wonderful is our God"
         },
         {
             "type": "hymn",
             "folder": "PTL",
-            "file": "091._i_get_so_thrilled_with_jesus.md"
+            "file": "024._god_is_raising_an_army.md"
         }
     ]
 }
