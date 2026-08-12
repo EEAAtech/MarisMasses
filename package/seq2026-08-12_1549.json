@@ -1,0 +1,26 @@
+{
+    "massDate": "2026-08-12",
+    "massTime": "15:49",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "GJL",
+            "file": "a-01amchea_bapan_amkam_apoileam.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "038._glorious_in_majesty.md"
+        },
+        {
+            "type": "response",
+            "title": "Wonder Ps",
+            "text": "Wonderful is our God"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "024._god_is_raising_an_army.md"
+        }
+    ]
+}
