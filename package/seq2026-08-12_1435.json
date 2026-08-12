@@ -1,0 +1,22 @@
+{
+    "massDate": "2026-08-12",
+    "massTime": "14:35",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "sweet_love_of_my_god.md",
+            "lyrics": "Love of my God"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "162._come_and_dine.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps 3",
+            "text": "A Psalm for 11 Aug"
+        }
+    ]
+}
