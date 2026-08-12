@@ -1,0 +1,26 @@
+{
+    "massDate": "2026-08-12",
+    "massTime": "15:30",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "(c)c.5_i_will_sing_god's_praises.md"
+        },
+        {
+            "type": "response",
+            "title": "POF",
+            "text": "Pof on Aug 11"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "007._stand_by_me.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "GJL",
+            "file": "a-01amchea_bapan_amkam_apoileam.md"
+        }
+    ]
+}
