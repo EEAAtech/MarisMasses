@@ -40,7 +40,7 @@ async function refreshController() {
         slide.slides.forEach(
 
             (item, index) => {
-
+                console.log(`Creating button for slide: ${item.label}`);
                 const button =
                     document.createElement("button");
 
@@ -49,7 +49,7 @@ async function refreshController() {
 
                 button.onclick =
                     async () => {
-
+                        console.log(`Button clicked for slide index: ${index}`);
                         await selectSlide(index);
 
                         await refreshController();

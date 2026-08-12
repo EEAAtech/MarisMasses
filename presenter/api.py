@@ -256,7 +256,7 @@ async def get_slide():
     # Markdown hymn
     filename = item["file"]
 
-    folder = item.get("folder")
+    folder = item["folder"]
 
     hymn = hymn_repository.load(
         filename,
@@ -336,7 +336,7 @@ async def select_slide(index: int):
 
         return state_manager.state.to_dict()
 
-    hymn = hymn_repository.load(item["file"])
+    hymn = hymn_repository.load(item["file"], item["folder"]) 
 
     if index < 0:
         index = 0
@@ -584,7 +584,11 @@ async def download_package():
     #
     # 8. Install OtherHymns embedded in the package.
     #
-    items_dir = PACKAGE_DIR / "items"
+    items_dir = (
+        PACKAGE_DIR /
+        "items" /
+        "OtherHymns"
+    )
 
     items_dir.mkdir(
         parents=True,

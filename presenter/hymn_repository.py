@@ -36,8 +36,8 @@ class HymnRepository:
                 folder /
                 filename
             )
-
-
+        print(f"Loading hymn from path: {self._items_dir}  / {folder} / {filename}")
+        print(f"Loading hymn from path: {path}")
 
         return self._parser.parse(path)
 
