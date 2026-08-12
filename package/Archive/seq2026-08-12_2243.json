@@ -1,0 +1,21 @@
+{
+    "massDate": "2026-08-12",
+    "massTime": "22:43",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "010._jesus,_my_lord,_my_god.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "017._what_a_friend_in_jesus.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "048._hallelujah_jesus_is_lord.md"
+        }
+    ]
+}
