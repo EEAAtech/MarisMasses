@@ -1,0 +1,27 @@
+{
+    "massDate": "2026-08-12",
+    "massTime": "14:53",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "sweetest_love_of_my_god.md",
+            "lyrics": "Sweet Love of my God\n\nIs the dearest thing to me\nall the world's treasures \ncan hold no candle to Thee\n\nIs the deepest longing of my heart\nwhat in the earth can from Thee, me part\nnay that I willest to depart"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "162._come_and_dine.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps 3",
+            "text": "A Psalm for 11 Aug"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "091._i_get_so_thrilled_with_jesus.md"
+        }
+    ]
+}
