@@ -925,6 +925,7 @@ async function uploadTextFile(
     path,
     contents,
     commitMessage,
+    repo = GITHUB_REPO,
     sha = null
 ) {
 
@@ -954,7 +955,7 @@ async function uploadTextFile(
     const response =
         await githubRequest(
 
-            `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`,
+            `https://api.github.com/repos/${GITHUB_OWNER}/${repo}/contents/${path}`,
 
             {
 
@@ -1156,7 +1157,7 @@ async function uploadPackage(packageObject) {
         `seq${date}_${time}.json`;
 
     const path =
-        `${PUBLIC_PACKAGE_FOLDER}/${filename}`;
+        `${filename}`;
 
     await uploadTextFile(
 
@@ -1168,7 +1169,9 @@ async function uploadPackage(packageObject) {
             4
         ),
 
-        `Mass sequence ${date} ${time}`
+        `Mass sequence ${date} ${time}`,
+        
+        repo = PUBLIC_REPO_NAME
 
     );
 
