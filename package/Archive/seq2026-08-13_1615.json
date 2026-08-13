@@ -1,0 +1,27 @@
+{
+    "massDate": "2026-08-13",
+    "massTime": "16:15",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "085._from_glory_to_glory.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "f.03_glory_to_god_on_high.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps from Git",
+            "text": "A song of thanksgiving from Git"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "a_gity_hymn.md",
+            "lyrics": "- Tests local\n\n\t- search of private hymn: yes\n\t- add new hymn and index updated: yes\n\t- upload new sequence: yes\n\t- search of public hymn: yes"
+        }
+    ]
+}
