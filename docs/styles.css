@@ -1,0 +1,305 @@
+body {
+
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+
+    background: #ececec;
+
+}
+
+.container {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 20px;
+
+}
+
+.card {
+
+    background: white;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+
+}
+
+.row {
+
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+}
+
+label {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+}
+
+input {
+
+    margin-top: 8px;
+
+    padding: 10px;
+
+    font-size: 16px;
+
+}
+
+#searchResults,
+#sequence {
+
+    margin-top: 20px;
+
+    min-height: 180px;
+
+}
+
+.placeholder {
+
+    color: gray;
+
+    font-style: italic;
+
+}
+
+button {
+
+    font-size: 18px;
+
+    padding: 14px 32px;
+
+    cursor: pointer;
+
+}
+
+footer {
+
+    text-align: center;
+
+}
+
+.resultRow,
+.sequenceRow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 8px;
+
+    border-bottom: 1px solid #ddd;
+
+}
+
+.resultText {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.resultText span {
+
+    font-size: 12px;
+
+    color: gray;
+
+}
+
+.addButton {
+
+    width: 36px;
+
+    height: 36px;
+
+    font-size: 22px;
+
+}
+
+.toolbar {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 15px;
+
+    margin-bottom: 15px;
+
+}
+
+.hidden {
+
+    display: none;
+
+}
+
+#responseEditor {
+
+    border: 1px solid #ccc;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+}
+
+#responseEditor label {
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 15px;
+
+}
+
+textarea {
+
+    margin-top: 8px;
+
+    padding: 10px;
+
+    font-size: 16px;
+
+    resize: vertical;
+
+}
+
+#hymnEditor {
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    padding: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+#hymnEditor label {
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 15px;
+
+}
+
+select {
+
+    margin-top: 8px;
+
+    padding: 10px;
+
+    font-size: 16px;
+
+}
+
+/* ------------------------------
+   Settings Dialog
+------------------------------ */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.301);
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.modal.show {
+
+    display: flex;
+
+}
+
+.modalCard {
+
+    background: white;
+
+    padding: 30px;
+
+    width: 450px;
+
+    max-width: 90%;
+
+    border-radius: 10px;
+
+}
+
+.buttonRow {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+}
+
+.buttonRow button {
+
+    flex: 1;
+
+}
+
+/* ==========================================
+   Top toolbar
+========================================== */
+
+#topToolbar {
+
+    position: fixed;
+
+    top: 16px;
+
+    right: 16px;
+
+    display: flex;
+
+    gap: 10px;
+
+    z-index: 1000;
+
+}
+
+#topToolbar button {
+
+    padding: 1px 1px;
+    font-size: 22px;
+    cursor: pointer;
+
+}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MassCast Builder</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div id="topToolbar">
+
+        <button
+            id="githubStatus"
+            title="GitHub Settings">
+
+            ⚪
+
+        </button>
+
+
+    </div>
+
+    <div class="container">
+
+        <header>
+
+            <h1>MassCast Builder</h1>
+
+        </header>
+
+        <!-- ===========================
+         Mass Information
+         =========================== -->
+
+        <section class="card">
+
+            <h2>Mass</h2>
+
+            <div class="row">
+
+                <label>
+
+                    Date
+
+                    <input id="massDate" type="date">
+
+                </label>
+
+                <label>
+
+                    Time
+
+                    <input id="massTime" type="time">
+
+                </label>
+
+            </div>
+
+        </section>
+
+        <!-- ===========================
+         Hymn Search
+         =========================== -->
+
+        <section class="card">
+
+            <h2>Search Hymns</h2>
+
+            <input id="searchBox" type="text" placeholder="Type hymn title or lyrics...">
+
+            <div class="toolbar">
+
+                <button id="newHymnButton">
+
+                    + Hymn
+
+                </button>
+
+                <button id="newResponseButton">
+
+                    + Response
+
+                </button>
+
+            </div>
+
+            <div id="responseEditor" class="hidden">
+
+                <label>
+
+                    Title
+
+                    <input id="responseTitle" type="text">
+
+                </label>
+
+                <label>
+
+                    Response
+
+                    <textarea id="responseText" rows="4"></textarea>
+
+                </label>
+
+                <button id="addResponseButton">
+
+                    Add Response
+
+                </button>
+
+            </div>
+
+            <div id="hymnEditor" class="hidden">
+
+                <h3>New Hymn</h3>
+
+                <label>
+
+                    Title
+
+                    <input id="newHymnTitle" type="text">
+
+                </label>
+
+                <label>
+
+                    Folder
+
+                    <select id="newHymnFolder">
+
+                        <option>OtherHymns</option>
+
+                       <!--  <option>PTL</option>
+
+                        <option>WJL</option>
+
+                        <option>GJ</option> -->
+
+                    </select>
+
+                </label>
+
+                <label>
+
+                    Lyrics (Markdown)
+
+                    <textarea id="newHymnLyrics" rows="14"
+                        placeholder="Paste the hymn exactly as it appears in the .md file"></textarea>
+
+                </label>
+
+                <p>
+
+                    file:
+
+                    <strong id="filePreview">
+
+                        —
+
+                    </strong>
+
+                </p>
+
+                <button id="saveNewHymnButton">
+
+                    Save Hymn
+
+                </button>
+
+            </div>
+
+            <div id="searchResults">
+
+                <p class="placeholder">
+
+                    Search results will appear here.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ===========================
+         Sequence
+         =========================== -->
+
+        <section class="card">
+
+            <h2>Sequence</h2>
+
+            <div id="sequence">
+
+                <p class="placeholder">
+
+                    No hymns added.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <footer>
+
+            <button id="buildButton" disabled>
+
+                Build Package
+
+            </button>
+            <a id="downloadLink" style="display:none">
+
+            </a>
+        </footer>
+
+    </div>
+
+    <script src="builder.js"></script>
+
+
+    <!-- ==========================================
+     Settings Dialog
+    ========================================== -->
+
+    <div id="settingsOverlay" class="modal">
+
+        <div class="modalCard">
+
+            <h2>GitHub Settings</h2>
+
+            <p>
+
+                Enter your GitHub Classic Personal Access Token.
+                This is only required once.
+
+            </p>
+
+            <label>
+
+                Personal Access Token
+
+                <input id="githubToken" type="password" autocomplete="off">
+
+            </label>
+
+            <div class="buttonRow">
+
+                <button id="testSaveButton">
+
+                    Test &amp; Save
+
+                </button>
+
+                <button id="closeSettingsButton">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+</body>
+
+</html>
