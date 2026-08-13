@@ -951,7 +951,7 @@ async function uploadTextFile(
         body.sha = sha;
 
     }
-
+    
     const response =
         await githubRequest(
 
@@ -988,6 +988,7 @@ async function uploadTextFile(
 
 async function loadGitHubJson(path) {
 
+    
     const response =
         await githubRequest(
 
@@ -1111,6 +1112,8 @@ async function addToLocalSearchIndex(entry) {
 
         "Updated search index",
 
+        GITHUB_REPO,
+
         file.sha
 
     );
@@ -1157,7 +1160,7 @@ async function uploadPackage(packageObject) {
         `seq${date}_${time}.json`;
 
     const path =
-        `${filename}`;
+        `package/` + `${filename}`;
 
     await uploadTextFile(
 
