@@ -1171,7 +1171,7 @@ async function uploadPackage(packageObject) {
 
         `Mass sequence ${date} ${time}`,
         
-        repo = PUBLIC_REPO_NAME
+        PUBLIC_REPO_NAME
 
     );
 
