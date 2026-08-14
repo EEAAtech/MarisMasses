@@ -9,8 +9,6 @@
 
 "use strict";
 
-let hymnIndex = [];
-
 const sequence = [];
 //
 // GitHub configuration
@@ -507,51 +505,6 @@ async function buildPackage() {
 
 }
 
-
-/*
- * Download the generated sequence.json file.
- */
-function downloadSequence(packageObject) {
-
-    const json = JSON.stringify(
-
-        packageObject,
-
-        null,
-
-        4
-
-    );
-
-    const blob = new Blob(
-
-        [json],
-
-        {
-
-            type: "application/json"
-
-        }
-
-    );
-
-    const url = URL.createObjectURL(blob);
-
-    const file =
-        `sequence_${packageObject.massDate}_${packageObject.massTime.replace(":", "")}.json`;
-
-    const link =
-        document.getElementById("downloadLink");
-
-    link.href = url;
-
-    link.download = file;
-
-    link.click();
-
-    URL.revokeObjectURL(url);
-
-}
 
 function toggleHymnEditor() {
 
@@ -1180,50 +1133,3 @@ async function uploadPackage(packageObject) {
 
 }
 
-//
-// Upload a text file to the public MassCast repository.
-//
-async function uploadPackageFile(path, contents, commitMessage) {
-
-    
-    const response = await uploadTextFile(path, contents, commitMessage);
-    
-    if (!response.ok) {
-
-        const error =
-            await response
-                .json()
-                .catch(() => ({}));
-
-        throw new Error(
-
-            `GitHub package upload failed: ` +
-            `${response.status} ` +
-            `${error.message || ""}`
-
-        );
-
-    }
-
-    return await response.json();
-
-}
-
-//
-// Safely encode UTF-8 text as Base64.
-// This is required because GitHub's Contents API expects
-// file contents to be Base64 encoded.
-//
-function utf8ToBase64(text) {
-
-    return btoa(
-
-        unescape(
-
-            encodeURIComponent(text)
-
-        )
-
-    );
-
-}
