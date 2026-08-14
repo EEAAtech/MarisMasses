@@ -223,7 +223,7 @@ function search(event) {
         row.querySelector("button")
             .addEventListener(
                 "click",
-                () => addToSequence(hymn)
+                () => addToSequence(hymn, row)
             );
 
         results.appendChild(row);
@@ -233,7 +233,7 @@ function search(event) {
 }
 
 
-function addToSequence(hymn) {
+function addToSequence(hymn, rowElement) {
 
     sequence.push({
 
@@ -248,7 +248,16 @@ function addToSequence(hymn) {
     });
 
     renderSequence();
+    
+    // Trigger the exit animation if the row element was passed
+    if (rowElement) {
+        rowElement.classList.add("fade-out");
 
+        // Remove from DOM once animation finishes
+        rowElement.addEventListener("transitionend", () => {
+            rowElement.remove();
+        }, { once: true });
+    }
 }
 
 
