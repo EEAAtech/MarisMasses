@@ -160,7 +160,12 @@ async function initialise() {
         );
 
     loadSettings();
-    await loadSearchLibrary();
+
+    try {
+        await loadSearchLibrary();
+    } catch (error) {
+        console.warn("Search library not loaded. A valid PAT is required.", error.message);
+    }
 }
 
 
@@ -248,7 +253,7 @@ function addToSequence(hymn, rowElement) {
     });
 
     renderSequence();
-    
+
     // Trigger the exit animation if the row element was passed
     if (rowElement) {
         rowElement.classList.add("fade-out");
@@ -810,6 +815,8 @@ async function testConnectionAndSave() {
 
         closeSettings();
 
+        // Load search library immediately after token is verified and saved
+        await loadSearchLibrary();
     }
 
     catch (err) {
