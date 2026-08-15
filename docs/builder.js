@@ -704,6 +704,9 @@ async function saveNewHymn() {
 
         );
 
+        // Add the new hymn directly to the sequence list
+        addToSequence(entry);
+        
         document
             .getElementById("newHymnTitle")
             .value = "";
