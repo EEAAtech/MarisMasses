@@ -213,23 +213,63 @@ function search(event) {
 
         row.innerHTML = `
 
-            <button class="addButton">+</button>
+            <div class="resultHeader">
 
-            <div class="resultText">
+                <button class="addButton" title="Add to sequence">+</button>
 
-                <strong>${hymn.title}</strong>
+                <button class="expandButton" title="Toggle lyrics">👁️</button>
 
-                <span>${hymn.folder}</span>
+                <div class="resultText">
+
+                    <strong>${hymn.title}</strong>
+
+                    <span>${hymn.folder}</span>
+
+                </div>
 
             </div>
 
+            <div class="lyricsContainer hidden"></div>
+
         `;
 
-        row.querySelector("button")
+        // Add to sequence
+        row.querySelector(".addButton")
             .addEventListener(
                 "click",
                 () => addToSequence(hymn, row)
             );
+
+        // Toggle lyrics visibility instant-style
+        const expandButton = row.querySelector(".expandButton");
+        const lyricsBox = row.querySelector(".lyricsContainer");
+
+        expandButton.addEventListener("click", () => {
+
+            const isHidden = lyricsBox.classList.contains("hidden");
+
+            if (isHidden) {
+
+                // Populate from memory on first toggle
+                if (!lyricsBox.textContent) {
+
+                    lyricsBox.textContent = hymn.lyrics || "No lyrics available.";
+
+                }
+
+                lyricsBox.classList.remove("hidden");
+
+                expandButton.textContent = "🙈";
+
+            } else {
+
+                lyricsBox.classList.add("hidden");
+
+                expandButton.textContent = "👁️";
+
+            }
+
+        });
 
         results.appendChild(row);
 

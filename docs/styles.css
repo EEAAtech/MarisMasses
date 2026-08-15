@@ -100,7 +100,7 @@ footer {
 
     display: flex;
 
-    align-items: center;
+    align-items: left;
 
     gap: 12px;
 
@@ -307,7 +307,7 @@ select {
 /* Ensure result items can animate height and opacity smoothly */
 .resultRow {
   transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease, margin 0.3s ease, padding 0.3s ease;
-  max-height: 100px; /* Adjust according to row height */
+  max-height: 500px; /* Adjust according to row height */
   opacity: 1;
   overflow: hidden;
 }
@@ -322,4 +322,48 @@ select {
   padding-top: 0;
   padding-bottom: 0;
   pointer-events: none; /* Prevent double-clicks during animation */
+}
+
+.resultRow {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.resultHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.expandButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.expandButton:hover {
+    background-color: #f0f0f0;
+}
+
+.lyricsContainer {
+    margin-top: 8px;
+    margin-left: 32px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-left: 3px solid #007bff;
+    border-radius: 4px;
+    white-space: pre-wrap; /* Preserves lyric line breaks (\n) */
+    font-size: 0.9em;
+    color: #333;
+    max-height: 12em;       /* Height roughly equal to 8 lines (1.5 line-height * 8) */
+    overflow-y: auto;       /* Adds a vertical scrollbar when content exceeds max-height */
+}
+
+.hidden {
+    display: none !important;
 }
