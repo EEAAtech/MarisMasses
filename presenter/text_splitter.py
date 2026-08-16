@@ -13,7 +13,7 @@ from presenter.models import Slide
 
 # Approximate maximum characters that comfortably fit on one slide.
 # This can be tuned later after testing on the TV.
-MAX_CHARS_PER_SLIDE = 180
+MAX_CHARS_PER_SLIDE = 80
 
 
 def split_slide(slide: Slide) -> list[Slide]:
