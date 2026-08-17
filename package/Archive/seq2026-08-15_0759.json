@@ -1,0 +1,73 @@
+{
+    "massDate": "2026-08-15",
+    "massTime": "07:59",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "enter_his_gates.md",
+            "lyrics": "ENTER HIS GATES\n\n1. Enter his gates with thanksgiving in your hearts\nEnter his courts with praise.\nEnter his gates with thanksgiving in your hearts.\nFor He has made me glad.\n\nCh: He has made me glad, he has made me glad.\nJesus has made me glad.\nEnter his courts with thanksgiving in your\nhearts.\nFor he has made me glad.\n\n2. Sing to the Lord and make music unto Him.\nSing to the Lord with joy...\n\n3. Worship, bend low while proclaiming He is God.\nPraise to the Lord most high..."
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "lord_have_mercy.md",
+            "lyrics": "Lord Have Mercy\n\nLord Have Mercy\nLord Have Mercy\n\nChrist Have Mercy\nChrist Have Mercy\n\nLord Have Mercy\nLord Have Mercy"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "mohima.md",
+            "lyrics": "Mohima\n\nMhoima Devak Unch Sorgim\nani xanti borea monachea mon'xank sonvsarim.\n\nSorvespora Deva, sorginchea Raya, sorvpodvedar Deva Bapa,\nami Tuka vakhanntanv,\nami Tuji stuti kortanv, ami Tuka nomoskar kortanv, ami Tuka mhoima ditanv,\nTujea thor voibhova pasot ami Tuka dhin'vastav.\n\nSomia, ekleach zonnit Puta, Jezu Krista, Somia Deva, Devache Xellie,   \nBapachea Puta, Tum sonvsarachem pap kaddtai: amchi kaklut kor.\nTum sonvsarachem pap kaddtai: amchem magnem aikun ghe\nTum Bapachea uzveak boslai: amchi kaklut kor.\nKiteak Povitr Atmea sangatim, Deva Bapache mhoiment, Jezu Kri-  sta,     ekloch Tum Povitr, \n\nekloch Tum Somi,\nekloch Tum Bhov Vorto. Aa-amen."
+        },
+        {
+            "type": "response",
+            "title": "Psalm",
+            "text": "On Your right stands the queen in gold Ophir"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "alleluia.md",
+            "lyrics": "Alleluia\n\n\nAlleluia ..."
+        },
+        {
+            "type": "response",
+            "title": "Prayers of the Faithful",
+            "text": "Marye bhaxen amkam Jezuche xis kor Bapa."
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "b.33_on_this_day_of_joy.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "povitr.md",
+            "lyrics": "Povitr\n\nPovitr Povitr Povitr\nDolbharancho  Sorvespor Dev\nSorg ani sonvsar  bhorlea \nTujea voibhovan\nHosanna unch sorgim\n\nSorvesporache nanvim \nIeta  to subhagi \nHosanna unch  sorgim"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "proclamation_3.md",
+            "lyrics": "Proclamation\n\nSave us, Saviour of the world, for by Your Cross and Resurrection You have set us free."
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "lamb_of_god_liturgical.md",
+            "lyrics": "Lamb Of God\n\nLamb Of God, You take away the sins of the world, have mercy on us\nLamb Of God, You take away the sins of the world, have mercy on us\nLamb Of God, You take away the sins of the world, grant us peace"
+        },
+        {
+            "type": "hymn",
+            "folder": "GJL",
+            "file": "d-16_jezu_mhojea.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "GJL",
+            "file": "t-21_kurpebhorit_saibinni.md"
+        }
+    ]
+}
