@@ -1,0 +1,31 @@
+{
+    "massDate": "2026-08-17",
+    "massTime": "18:15",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.015_longing_for_god.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.017(a)_all_peoples_of_the_universe.md"
+        },
+        {
+            "type": "response",
+            "title": "Psalm",
+            "text": "One thing I ask of the Lord, to live in the house of the Lord all the days of my life"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "(c)c.5_i_will_sing_god's_praises.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "(c_)c.73_thy_loving_kindness.md"
+        }
+    ]
+}
