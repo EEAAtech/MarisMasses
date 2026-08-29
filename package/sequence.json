@@ -1,26 +1,36 @@
 {
     "massDate": "2026-08-29",
-    "massTime": "10:35",
+    "massTime": "18:50",
     "items": [
         {
             "type": "hymn",
-            "folder": "PTL",
-            "file": "005._hymn_of_glory.md"
-        },
-        {
-            "type": "hymn",
-            "folder": "PTL",
-            "file": "243._thy_loving_kindness.md"
+            "folder": "GJL",
+            "file": "a-04_apoileai_mhonn_amkam.md"
         },
         {
             "type": "hymn",
             "folder": "GJL",
-            "file": "a-06_dev_amcho_bap.md"
+            "file": "a-21_novem_git_rochun_gaiat.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "GJL",
+            "file": "a-29_sorvesporachea_mondirant.md"
         },
         {
             "type": "hymn",
             "folder": "WJL",
-            "file": "(c_)c.73_thy_loving_kindness.md"
+            "file": "a.116_come,_ring_out_your_joy.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.118_rejoice_evermore.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "d.029_jesus_always_loved_his_own.md"
         }
     ]
 }

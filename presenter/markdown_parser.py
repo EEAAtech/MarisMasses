@@ -46,9 +46,9 @@ class MarkdownParser:
             encoding="utf-8"
         )
 
-        return self.parse_text(text)
+        return self.parse_text(text, filename)
 
-    def parse_text(self, text: str) -> Hymn:
+    def parse_text(self, text: str, filename: Path | str | None = None) -> Hymn:
         """
         Parse markdown supplied as a string.
 
@@ -76,13 +76,20 @@ class MarkdownParser:
                 slides=[]
             )
 
-        title = paragraphs[0]
+        title = ""
+
+        if filename is not None:
+            stem = Path(filename).stem.replace("_", " ")
+            title = " ".join(
+                part[:1].upper() + part[1:].lower()
+                for part in stem.split()
+            )
 
         hymn = Hymn(title=title)
 
         verse_number = 1
 
-        for paragraph in paragraphs[1:]:
+        for paragraph in paragraphs[0:]:
 
             if self.CHORUS_PATTERN.match(paragraph):
 

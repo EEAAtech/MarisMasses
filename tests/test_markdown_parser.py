@@ -2,7 +2,9 @@
 Unit tests for the MassCast Markdown parser.
 """
 
+import tempfile
 import unittest
+from pathlib import Path
 
 from presenter.markdown_parser import MarkdownParser
 
@@ -117,6 +119,19 @@ CH: Sing to the Lord
             hymn.slides[0].text,
             "Sing to the Lord"
         )
+
+    def test_filename_used_as_title(self):
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = Path(tmpdir) / "the_name_of_the_song.md"
+            path.write_text("Verse One", encoding="utf-8")
+
+            hymn = self.parser.parse(path)
+
+            self.assertEqual(
+                hymn.title,
+                "the name of the song"
+            )
 
     def test_windows_line_endings(self):
 
