@@ -1,0 +1,22 @@
+{
+    "massDate": "2026-08-18",
+    "massTime": "19:50",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "(c_)c.73_thy_loving_kindness.md"
+        },
+        {
+            "type": "response",
+            "title": "Psalm",
+            "text": "One thing I ask of the Lord, to live in the house of the Lord all the days of my life"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "havenu.md",
+            "lyrics": "Havenu\n\n\nfdsfdf fsdfsd\n\nsdfsdfsdf\ns\ndfsd\n\n\nsdfsdf"
+        }
+    ]
+}
