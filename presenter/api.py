@@ -223,7 +223,8 @@ async def get_slide():
                 "slides": [
                     {
                         "label": "1",
-                        "kind": "response"
+                        "kind": "response",
+                        "text": item["text"]
                     }
                 ]
             }
@@ -240,7 +241,8 @@ async def get_slide():
             "slides": [
                 {
                     "label": "1",
-                    "kind": "response"
+                    "kind": "response",
+                    "text": item["text"]
                 }
             ],
 
@@ -293,7 +295,8 @@ async def get_slide():
             "slides": [
                 {
                     "label": s.label,
-                    "kind": s.kind
+                    "kind": s.kind,
+                    "text": s.text
                 }
                 for s in hymn.slides
             ]
@@ -306,7 +309,8 @@ async def get_slide():
         "slides": [
         {
             "label": slide.label,
-            "kind": slide.kind
+            "kind": slide.kind,
+            "text": slide.text
         }
         for slide in hymn.slides
         ],

@@ -26,22 +26,90 @@ body{
 
     display:flex;
 
-    flex-wrap:wrap;
+    flex-direction:column;
 
-    gap:12px;
-
-    justify-content:center;
+    gap:8px;
 
     margin-bottom:30px;
+
 }
 
 #slideButtons button{
 
-    width:90px;
+    width:100%;
 
-    height:90px;
+    min-height:64px;
 
-    font-size:32px;
+    padding:10px 16px;
+
+    font-size:22px;
+
+    text-align:left;
+
+    border:2px solid transparent;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    color:#202020;
+
+    background:#eeeeee;
+
+    line-height:1.25;
+
+}
+
+/*
+ * Pastel colours identify slides belonging
+ * to the same original paragraph.
+ */
+
+#slideButtons button[data-group="top"] {
+    background:#f8d7da;
+}
+
+#slideButtons button[data-group="1"] {
+    background:#dff2df;
+}
+
+#slideButtons button[data-group="2"] {
+    background:#dceeff;
+}
+
+#slideButtons button[data-group="3"] {
+    background:#fff1cc;
+}
+
+#slideButtons button[data-group="4"] {
+    background:#eadcf8;
+}
+
+#slideButtons button[data-group="5"] {
+    background:#f8dfd0;
+}
+
+#slideButtons button[data-group="6"] {
+    background:#d9f0ed;
+}
+
+#slideButtons button[data-group="7"] {
+    background:#eee0f5;
+}
+
+#slideButtons button[data-group="8"] {
+    background:#e8efd0;
+}
+
+#slideButtons button[data-group="9"] {
+    background:#f5dfdf;
+}
+
+
+.selected {
+    background:#2d7cff !important;
+    color:white;
+    border:4px solid white !important;
 }
 
 #navigation,
@@ -62,14 +130,4 @@ body{
     height:90px;
 
     font-size:28px;
-}
-
-.selected{
-
-    background:#2d7cff;
-
-    color:white;
-
-    border:4px solid white;
-
 }
