@@ -948,6 +948,29 @@ async function uploadTextFile(
             )
         );
 
+
+
+    const url = `https://api.github.com/repos/${GITHUB_OWNER}/${repo}/contents/${path}`;
+
+    // If no sha was explicitly provided, check whether the file already
+    // exists and, if so, fetch its current sha so we can overwrite it.
+    if (!sha) {
+        const existing = await githubRequest(
+            `${url}?ref=${GITHUB_BRANCH}`,
+            { method: "GET" }
+        );
+
+        if (existing.ok) {
+            const existingData = await existing.json();
+            sha = existingData.sha;
+        } else if (existing.status !== 404) {
+            // Some other error (auth, rate limit, etc.) - surface it
+            const error = await existing.json();
+            throw new Error(error.message);
+        }
+        // if 404, file just doesn't exist yet — sha stays null, which is fine
+    }   
+
     const body = {
 
         message: commitMessage,
@@ -967,7 +990,7 @@ async function uploadTextFile(
     const response =
         await githubRequest(
 
-            `https://api.github.com/repos/${GITHUB_OWNER}/${repo}/contents/${path}`,
+            url,
 
             {
 
