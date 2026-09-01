@@ -1,0 +1,56 @@
+{
+    "massDate": "2026-09-01",
+    "massTime": "18:58",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "002._for_you_are_my_god_(ps._16).md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "004._sing_praise_to_the_living_god.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "062._mary.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "220._hail_mary_gentle_woman.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "t.20_mary_said_yes.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "134._be_with_us_mary_along_the_way.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "t.26_hail,_mary,_full_of_grace.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "t.55_0_how_we_love_mary.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "t.54_glory_and_honour_o_mary.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "t.29_invocation_to_mary.md"
+        }
+    ]
+}
