@@ -22,6 +22,9 @@ const MASS_IMAGE_MIN_DPI = 72;
 
 const MASS_IMAGE_TARGET_DPI = 72;
 
+// Allowed rounding tolerance when checking the 640:480 (4:3) aspect ratio
+const MASS_IMAGE_RATIO_TOLERANCE = 0.01;
+
 //
 // Holds the processed (72 dpi) holding image as an ArrayBuffer,
 // ready to be uploaded alongside the sequence package.
@@ -626,11 +629,28 @@ async function handleMassImageSelect(event) {
 
         const info = readJpegInfo(arrayBuffer);
 
-        if (info.width !== MASS_IMAGE_WIDTH || info.height !== MASS_IMAGE_HEIGHT) {
+        const targetRatio = MASS_IMAGE_WIDTH / MASS_IMAGE_HEIGHT;
+        const actualRatio =
+            info.width && info.height ? info.width / info.height : null;
+
+        if (
+            actualRatio === null ||
+            Math.abs(actualRatio - targetRatio) > MASS_IMAGE_RATIO_TOLERANCE
+        ) {
 
             throw new Error(
-                `Image must be exactly ${MASS_IMAGE_WIDTH}px wide x ${MASS_IMAGE_HEIGHT}px tall ` +
+                `Image must be in a ${MASS_IMAGE_WIDTH}x${MASS_IMAGE_HEIGHT} (4:3) ratio ` +
                 `(this image is ${info.width || "?"}x${info.height || "?"}).`
+            );
+
+        }
+
+        if (info.width < MASS_IMAGE_WIDTH || info.height < MASS_IMAGE_HEIGHT) {
+
+            throw new Error(
+                `Image resolution is too low. It must be at least ` +
+                `${MASS_IMAGE_WIDTH}x${MASS_IMAGE_HEIGHT}px ` +
+                `(this image is ${info.width}x${info.height}).`
             );
 
         }
@@ -653,7 +673,7 @@ async function handleMassImageSelect(event) {
         );
 
         status.textContent =
-            `Image ready (${MASS_IMAGE_WIDTH}x${MASS_IMAGE_HEIGHT}, ${MASS_IMAGE_TARGET_DPI} dpi).`;
+            `Image ready (${info.width}x${info.height}, ${MASS_IMAGE_TARGET_DPI} dpi).`;
         status.className = "imageOk";
 
     }
