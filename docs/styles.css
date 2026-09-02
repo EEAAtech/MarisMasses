@@ -79,6 +79,32 @@ input {
 
 }
 
+.imageNote {
+
+    margin-top: 4px;
+
+    margin-bottom: 4px;
+
+    font-size: 13px;
+
+    color: #666;
+
+}
+
+#massImageStatus {
+
+    font-size: 14px;
+
+}
+
+#massImageStatus.imageOk {
+
+    color: #1a7a1a;
+
+    font-style: normal;
+
+}
+
 button {
 
     font-size: 18px;
@@ -89,11 +115,6 @@ button {
 
 }
 
-footer {
-
-    text-align: center;
-
-}
 
 .resultRow,
 .sequenceRow {
