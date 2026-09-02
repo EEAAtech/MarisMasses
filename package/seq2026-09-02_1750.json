@@ -1,0 +1,26 @@
+{
+    "massDate": "2026-09-02",
+    "massTime": "17:50",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "005._hymn_of_glory.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "071._o_give_thanks_to_the_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "105._thank_you_thank_you_jesus.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "076._rejoice_evermore.md"
+        }
+    ]
+}
