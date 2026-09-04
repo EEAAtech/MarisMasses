@@ -29,6 +29,8 @@ class PresenterState:
     # True while the holding image is displayed.
     holdingScreen: bool = False
 
+    currentSequence: str = ""
+
     def to_dict(self):
         """Return the state as a serializable dictionary."""
         return asdict(self)

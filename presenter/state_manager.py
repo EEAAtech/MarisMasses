@@ -51,4 +51,10 @@ class StateManager:
 
         return self._state.holdingScreen
 
+    def get_current_sequence(self):
+            return self._state.currentSequence
+    
+    def set_current_sequence(self, sequence: str):
+        self._state.currentSequence = sequence
+
 state_manager = StateManager()

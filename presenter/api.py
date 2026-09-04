@@ -12,7 +12,8 @@ from presenter.config import (
     GITHUB_REPO,
     GITHUB_BRANCH,
     GITHUB_PACKAGE_PATH,
-    GITHUB_TOKEN
+    GITHUB_TOKEN,
+    STATIC_DIR 
 )
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
@@ -27,8 +28,9 @@ router = APIRouter(prefix="/api")
 
 DEFAULT_HYMN = "go_tell_everyone.md"
 SEQUENCE_FILENAME_PATTERN = re.compile(
-    r"^seq(\d{4}-\d{2}-\d{2})_(\d{4})\.json$"
+    r"^seq(\d{4}-\d{2}-\d{2})_(\d{4})\.(json|jpg)$"
 )
+
 
 GITHUB_API_BASE = (
     f"https://api.github.com/repos/"
@@ -72,7 +74,8 @@ async def github_get(path: str):
 async def github_put(
     path: str,
     content: str,
-    message: str
+    message: str,
+    is_base64: bool = False
 ):
 
     if not GITHUB_TOKEN:
@@ -87,9 +90,12 @@ async def github_put(
 
     url = f"{GITHUB_API_BASE}/contents/{path}"
 
-    encoded = base64.b64encode(
-        content.encode("utf-8")
-    ).decode("ascii")
+    if is_base64:
+        encoded = content.replace("\n", "")
+    else:
+        encoded = base64.b64encode(
+            content.encode("utf-8")
+        ).decode("ascii")
 
     headers = {
         "Accept": "application/vnd.github+json",
@@ -204,6 +210,28 @@ async def get_slide():
 
     item = sequence[state.currentItemIndex]
 
+    # Check for sequence-specific holding image
+    holding_image = "/static/images/holding.jpg"
+    sequence_path = PACKAGE_DIR / state_manager.get_current_sequence() 
+
+    print(f"Current item: {holding_image}")
+    print(f"Checking for holding image in {sequence_path}")
+    if sequence_path.exists():
+        try:
+            pkg_data = json.loads(sequence_path.read_text(encoding="utf-8"))
+            orig_name = pkg_data.get("originalFilename")
+            print(f"Original filename from {sequence_path}: {orig_name}")
+            if orig_name:
+                expected_jpg = orig_name.replace(".json", ".jpg").replace("seq", "holding")
+                print(f"Expected holding image: {expected_jpg}")
+                if (Path("/static/images") / expected_jpg).exists():
+                    holding_image = f"/static/images/{expected_jpg}"
+                    print(f"Found holding image: {holding_image}")
+        except Exception:
+            pass
+
+    print(f"Current item recheck: {holding_image}")
+
     # Inline response
     if item["type"] == "response":
 
@@ -214,7 +242,7 @@ async def get_slide():
 
                 "holding": True,
 
-                "image": "/static/images/holding.jpg",
+                "image": holding_image,
 
                 "title": item["title"],
 
@@ -498,6 +526,7 @@ async def download_package():
     #
     for item in expired:
 
+        # Archive JSON file
         archive_path = (
             f"{GITHUB_PACKAGE_PATH}/Archive/"
             f"{item['name']}"
@@ -513,24 +542,30 @@ async def download_package():
         ).decode("utf-8")
 
         await github_put(
-
             archive_path,
-
             content,
-
             f"Archive expired package {item['name']}"
-
         )
 
         await github_delete(
-
             item["path"],
-
             item["sha"],
-
             f"Archive expired package {item['name']}"
-
         )
+
+        # Archive corresponding image file if it exists
+        image_name = item['name'].replace('.json', '.jpg').replace('seq', 'holding')
+        image_file = next((f for f in package_files if f.get("name") == image_name), None)
+        
+        if image_file:
+            image_archive_path = f"{GITHUB_PACKAGE_PATH}/Archive/{image_name}"
+            
+
+            await github_delete(
+                image_file["path"],
+                image_file["sha"],
+                f"Archive expired package image {image_name}"
+            )
 
     #
     # 5. Keep only packages that are still in the future.
@@ -571,7 +606,7 @@ async def download_package():
     )
 
     #
-    # 7. Download the selected JSON.
+    # 7. Download the selected JSON (and corresponding image).
     #
     package_data = await github_get(
         selected["path"]
@@ -585,6 +620,26 @@ async def download_package():
     ).decode("utf-8")
 
     package = json.loads(package_json)
+    state_manager.set_current_sequence(selected["name"])
+    print(f"Selected package {selected['name']} after download: {state_manager.get_current_sequence()}")
+
+    # Check for corresponding sequence .jpg and download it
+    selected_image_name = selected["name"].replace('.json', '.jpg').replace('seq', 'holding')
+    selected_image_file = next((f for f in package_files if f.get("name") == selected_image_name), None)
+
+    if selected_image_file:
+        image_data = await github_get(selected_image_file["path"])
+        image_bytes = base64.b64decode(image_data["content"].replace("\n", ""))
+        
+        image_dir = (
+            STATIC_DIR /
+            "images"
+        )
+
+        
+        image_dir.mkdir(parents=True, exist_ok=True)
+        
+        (image_dir / selected_image_name).write_bytes(image_bytes)
 
     #
     # 8. Install OtherHymns embedded in the package.
