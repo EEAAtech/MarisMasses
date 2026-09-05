@@ -26,7 +26,6 @@ from presenter.sequence_repository import sequence_repository
 router = APIRouter(prefix="/api")
 
 
-DEFAULT_HYMN = "go_tell_everyone.md"
 SEQUENCE_FILENAME_PATTERN = re.compile(
     r"^seq(\d{4}-\d{2}-\d{2})_(\d{4})\.(json|jpg)$"
 )
@@ -218,7 +217,7 @@ async def get_slide():
     print(f"Checking for holding image in {sequence_path}")
     if sequence_path.exists():
         try:
-            pkg_data = json.loads(sequence_path.read_text(encoding="utf-8"))
+            
             orig_name = sequence_path.name
             print(f"Original filename from {sequence_path}: {orig_name}")
             if orig_name:
@@ -558,9 +557,6 @@ async def download_package():
         image_file = next((f for f in package_files if f.get("name") == image_name), None)
         
         if image_file:
-            image_archive_path = f"{GITHUB_PACKAGE_PATH}/Archive/{image_name}"
-            
-
             await github_delete(
                 image_file["path"],
                 image_file["sha"],
