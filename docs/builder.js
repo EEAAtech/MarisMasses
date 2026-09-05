@@ -18,6 +18,10 @@ const MASS_IMAGE_WIDTH = 640;
 
 const MASS_IMAGE_HEIGHT = 480;
 
+const MASS_IMAGE_MAX_WIDTH = 1920;
+
+const MASS_IMAGE_MAX_HEIGHT = 1440;
+
 const MASS_IMAGE_MIN_DPI = 72;
 
 const MASS_IMAGE_TARGET_DPI = 72;
@@ -639,7 +643,7 @@ async function handleMassImageSelect(event) {
         ) {
 
             throw new Error(
-                `Image must be in a ${MASS_IMAGE_WIDTH}x${MASS_IMAGE_HEIGHT} (4:3) ratio ` +
+                `Image must be within ${MASS_IMAGE_WIDTH}x${MASS_IMAGE_HEIGHT} to ${MASS_IMAGE_MAX_WIDTH}x${MASS_IMAGE_MAX_HEIGHT} in a  (4:3) ratio ` +
                 `(this image is ${info.width || "?"}x${info.height || "?"}).`
             );
 
@@ -650,6 +654,19 @@ async function handleMassImageSelect(event) {
             throw new Error(
                 `Image resolution is too low. It must be at least ` +
                 `${MASS_IMAGE_WIDTH}x${MASS_IMAGE_HEIGHT}px ` +
+                `(this image is ${info.width}x${info.height}).`
+            );
+
+        }
+
+        if (
+            info.width > MASS_IMAGE_MAX_WIDTH ||
+            info.height > MASS_IMAGE_MAX_HEIGHT
+        ) {
+
+            throw new Error(
+                `Image resolution is too high. It must be no larger than ` +
+                `${MASS_IMAGE_MAX_WIDTH}x${MASS_IMAGE_MAX_HEIGHT}px ` +
                 `(this image is ${info.width}x${info.height}).`
             );
 
