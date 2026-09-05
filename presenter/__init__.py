@@ -1,3 +1,0 @@
-"""
-MassCast Presenter Package
-"""
