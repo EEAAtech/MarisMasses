@@ -219,13 +219,13 @@ async def get_slide():
     if sequence_path.exists():
         try:
             pkg_data = json.loads(sequence_path.read_text(encoding="utf-8"))
-            orig_name = pkg_data.get("originalFilename")
+            orig_name = sequence_path.name
             print(f"Original filename from {sequence_path}: {orig_name}")
             if orig_name:
                 expected_jpg = orig_name.replace(".json", ".jpg").replace("seq", "holding")
-                print(f"Expected holding image: {expected_jpg}")
-                if (Path("/static/images") / expected_jpg).exists():
-                    holding_image = f"/static/images/{expected_jpg}"
+                print(f"Expected holding image: {STATIC_DIR / 'images' / expected_jpg}")
+                if (STATIC_DIR / "images" / expected_jpg).exists():
+                    holding_image = "/static/images/" + expected_jpg
                     print(f"Found holding image: {holding_image}")
         except Exception:
             pass
@@ -314,7 +314,7 @@ async def get_slide():
 
             "holding": True,
 
-            "image": "/static/images/holding.jpg",
+            "image": holding_image,
 
             "title": hymn.title,
 
@@ -628,19 +628,22 @@ async def download_package():
     selected_image_file = next((f for f in package_files if f.get("name") == selected_image_name), None)
 
     if selected_image_file:
-        image_data = await github_get(selected_image_file["path"])
-        image_bytes = base64.b64decode(image_data["content"].replace("\n", ""))
+        download_url = selected_image_file.get("download_url")
         
-        image_dir = (
-            STATIC_DIR /
-            "images"
-        )
+        if download_url:
+            # Fetch the raw binary data directly
+            async with httpx.AsyncClient() as client:            
+                response = await client.get(download_url)
+                response.raise_for_status()
+                image_bytes = response.content
+            
+            image_dir = STATIC_DIR / "images"
+            image_dir.mkdir(parents=True, exist_ok=True)
+            
+            (image_dir / selected_image_name).write_bytes(image_bytes)
+            print(f"Successfully downloaded {selected_image_name}")
 
-        
-        image_dir.mkdir(parents=True, exist_ok=True)
-        
-        (image_dir / selected_image_name).write_bytes(image_bytes)
-
+    
     #
     # 8. Install OtherHymns embedded in the package.
     #
@@ -691,7 +694,7 @@ async def download_package():
     # 9. Install sequence.json locally.
     #
     sequence_path = (
-        PACKAGE_DIR / "sequence.json"
+        PACKAGE_DIR / state_manager.get_current_sequence()
     )
 
     sequence_path.write_text(
