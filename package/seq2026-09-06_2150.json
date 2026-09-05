@@ -1,0 +1,26 @@
+{
+    "massDate": "2026-09-06",
+    "massTime": "21:50",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "071._o_give_thanks_to_the_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "076._rejoice_evermore.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "GJL",
+            "file": "a-23_povitr_amchi_sobha.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "d.090_bread_that_was_sown.md"
+        }
+    ]
+}
