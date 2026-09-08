@@ -1,0 +1,31 @@
+{
+    "massDate": "2026-09-08",
+    "massTime": "21:49",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "071._o_give_thanks_to_the_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "076._rejoice_evermore.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps Sing",
+            "text": "Sing praise to our Living God, Glory Alleluia!"
+        },
+        {
+            "type": "hymn",
+            "folder": "GJL",
+            "file": "a-23_povitr_amchi_sobha.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "d.090_bread_that_was_sown.md"
+        }
+    ]
+}
