@@ -24,16 +24,52 @@
 
         </button>
 
-
     </div>
 
     <div class="container">
 
         <header>
 
-            <h1>MassCast Builder</h1>
+            <h1>Mass Sequence Builder</h1>
 
         </header>
+
+
+        <!-- ===========================
+         Sequence
+         =========================== -->
+
+        <section class="card">
+
+            <h2>Sequence</h2>
+
+            <div class="toolbar">
+
+                <select id="packageSelect">
+
+                    <option value="">View/edit an existing sequence...</option>
+
+                </select>
+
+                <button id="loadPackageButton" disabled>
+
+                    Load
+
+                </button>
+
+            </div>
+
+            <div id="sequence">
+
+                <p class="placeholder">
+
+                    No hymns added.
+
+                </p>
+
+            </div>
+
+        </section>
 
         <!-- ===========================
          Mass Information
@@ -67,7 +103,7 @@
 
                     <input id="massImage" type="file" accept="image/jpeg,.jpg,.jpeg">
 
-                    <small>Required: Ratio of 640 px wide x 480 px high, at least 72 DPI.</small>
+                    <small>Required: Ratio of 4:3 with max 1920 px wide x 1440 px high, of at least 72 DPI.</small>
 
                      
         
@@ -94,28 +130,6 @@
             </div>
 
         </section>
-
-
-
-        <!-- ===========================
-         Sequence
-         =========================== -->
-
-        <section class="card">
-
-            <h2>Sequence</h2>
-
-            <div id="sequence">
-
-                <p class="placeholder">
-
-                    No hymns added.
-
-                </p>
-
-            </div>
-
-        </section>        
 
 
         <!-- ===========================
@@ -241,18 +255,6 @@
 
         </section>
 
-
-        <footer>
-
-            <button id="buildButton" disabled>
-
-                Build Package
-
-            </button>
-            <a id="downloadLink" style="display:none">
-
-            </a>
-        </footer>
 
     </div>
 

@@ -128,6 +128,20 @@ async function initialise() {
         );
 
     document
+        .getElementById("packageSelect")
+        .addEventListener(
+            "change",
+            updateLoadPackageButton
+        );
+
+    document
+        .getElementById("loadPackageButton")
+        .addEventListener(
+            "click",
+            loadSelectedPackage
+        );
+
+    document
         .getElementById("addResponseButton")
         .addEventListener(
             "click",
@@ -195,8 +209,9 @@ async function initialise() {
 
     try {
         await loadSearchLibrary();
+        await loadPackageList();
     } catch (error) {
-        console.warn("Search library not loaded. A valid PAT is required.", error.message);
+        console.warn("GitHub data not loaded. A valid PAT is required.", error.message);
     }
 }
 
@@ -372,7 +387,7 @@ function renderSequence() {
             <span>
 
                 ${item.type === "response"
-                    ? "📖 " + item.title
+                    ? "📖 " + item.title + ": " + item.text
                     : "🎵 " + item.title}
 
             </span>
@@ -422,6 +437,119 @@ function renderSequence() {
     });
 
     updateBuildButton();
+
+}
+
+function updateLoadPackageButton() {
+
+    document
+        .getElementById("loadPackageButton")
+        .disabled = !document
+            .getElementById("packageSelect")
+            .value;
+
+}
+
+async function loadPackageList() {
+
+    const response = await githubRequest(
+        `https://api.github.com/repos/${PUBLIC_REPO_OWNER}/${PUBLIC_REPO_NAME}/contents/${PUBLIC_PACKAGE_FOLDER}?ref=${PUBLIC_REPO_BRANCH}`
+    );
+
+    if (!response.ok) {
+
+        throw new Error("Unable to list uploaded packages.");
+
+    }
+
+    const files = await response.json();
+    const select = document.getElementById("packageSelect");
+
+    files
+        .filter(file =>
+            file.type === "file" &&
+            /^seq.*\.json$/i.test(file.name)
+        )
+        .sort((a, b) => b.name.localeCompare(a.name))
+        .forEach(file => {
+
+            const option = document.createElement("option");
+
+            option.value = file.name;
+            option.textContent = file.name;
+
+            select.appendChild(option);
+
+        });
+
+    updateLoadPackageButton();
+
+}
+
+async function loadSelectedPackage() {
+
+    const filename = document
+        .getElementById("packageSelect")
+        .value;
+
+    if (!filename) {
+
+        return;
+
+    }
+
+    const button = document.getElementById("loadPackageButton");
+
+    button.disabled = true;
+
+    try {
+
+        const packageObject = await loadPublicGitHubJson(
+            `${PUBLIC_PACKAGE_FOLDER}/${filename}`
+        );
+
+        if (!Array.isArray(packageObject.items)) {
+
+            throw new Error("The selected package has no valid sequence items.");
+
+        }
+
+        sequence.push(
+            ...packageObject.items.map(item => {
+
+                if (item.type !== "hymn") {
+
+                    return item;
+
+                }
+
+                const hymn = searchLibrary.find(entry =>
+                    entry.folder === item.folder &&
+                    entry.file === item.file
+                );
+
+                return {
+                    ...item,
+                    title: hymn ? hymn.title : item.file
+                };
+
+            })
+        );
+
+        renderSequence();
+
+    }
+    catch (error) {
+
+        console.error("Package load failed:", error);
+        alert("Unable to load the selected package:\n\n" + error.message);
+
+    }
+    finally {
+
+        updateLoadPackageButton();
+
+    }
 
 }
 
@@ -1617,6 +1745,30 @@ async function loadGitHubJson(path) {
         data: JSON.parse(decoded)
 
     };
+
+}
+
+async function loadPublicGitHubJson(path) {
+
+    const response = await githubRequest(
+        `https://api.github.com/repos/${PUBLIC_REPO_OWNER}/${PUBLIC_REPO_NAME}/contents/${path}?ref=${PUBLIC_REPO_BRANCH}`
+    );
+
+    if (!response.ok) {
+
+        throw new Error("Unable to download " + path);
+
+    }
+
+    const json = await response.json();
+
+    const decoded = decodeURIComponent(
+        escape(
+            atob(json.content.replace(/\n/g, ""))
+        )
+    );
+
+    return JSON.parse(decoded);
 
 }
 
