@@ -4,6 +4,16 @@
     "items": [
         {
             "type": "hymn",
+            "folder": "PTL",
+            "file": "037._psalm_18.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps",
+            "text": "Happy is the man who trusts in the Lord"
+        },
+        {
+            "type": "hymn",
             "folder": "WJL",
             "file": "g.05_accept_me,_my_lord.md"
         },
