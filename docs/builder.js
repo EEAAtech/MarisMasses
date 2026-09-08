@@ -205,6 +205,13 @@ async function initialise() {
             testConnectionAndSave
         );
 
+    document
+        .getElementById("clearSearchButton")
+        .addEventListener(
+            "click",
+            clearSearch
+        );
+
     loadSettings();
 
     try {
@@ -215,6 +222,17 @@ async function initialise() {
     }
 }
 
+
+
+function clearSearch() {
+
+    document.getElementById("searchBox").value = "";
+
+    const results = document.getElementById("searchResults");
+
+    results.innerHTML = "<p class=\"placeholder\">Search results will appear here.</p>";
+
+}
 
 
 function search(event) {

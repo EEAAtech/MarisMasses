@@ -140,7 +140,17 @@
 
             <h2>Search Hymns</h2>
 
-            <input id="searchBox" type="text" placeholder="Type hymn title or lyrics...">
+            <div class="searchContainer">
+
+                <input id="searchBox" type="text" placeholder="Type hymn title or lyrics...">
+
+                <button id="clearSearchButton" class="clearButton" title="Clear search">
+
+                    ✕
+
+                </button>
+
+            </div>
 
             <div class="toolbar">
 
@@ -219,7 +229,7 @@
                     Lyrics (Markdown)
 
                     <textarea id="newHymnLyrics" rows="14"
-                        placeholder="Paste the hymn exactly as it appears in the .md file"></textarea>
+                        placeholder="Paste the hymn lyrics here"></textarea>
 
                 </label>
 

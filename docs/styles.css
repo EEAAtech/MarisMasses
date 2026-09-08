@@ -62,6 +62,60 @@ input {
 
 }
 
+.searchContainer {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+    align-items: center;
+
+}
+
+.searchContainer input {
+
+    flex: 1;
+
+    margin-top: 0;
+
+}
+
+.clearButton {
+
+    width: 36px;
+
+    height: 36px;
+
+    padding: 0;
+
+    font-size: 20px;
+
+    background-color: #f0f0f0;
+
+    border: 1px solid #ddd;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+
+}
+
+.clearButton:hover {
+
+    background-color: #e0e0e0;
+
+}
+
+.clearButton:active {
+
+    background-color: #d0d0d0;
+
+}
+
 #searchResults,
 #sequence {
 
