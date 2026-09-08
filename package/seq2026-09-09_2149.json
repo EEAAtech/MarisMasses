@@ -1,0 +1,31 @@
+{
+    "massDate": "2026-09-09",
+    "massTime": "21:49",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "g.05_accept_me,_my_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "045._hear_0_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "059._the_magnificat.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "092._give_me_oil_in_my_lamp.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "013._ave_of_lourdes.md"
+        }
+    ]
+}
