@@ -220,6 +220,41 @@ async function initialise() {
     } catch (error) {
         console.warn("GitHub data not loaded. A valid PAT is required.", error.message);
     }
+    checkGithubStatus();
+}
+
+function checkGithubStatus() {
+    const token = localStorage.getItem("githubPAT");
+    const searchBox = document.getElementById("searchBox");
+    const packageSelect = document.getElementById("packageSelect");
+    const statusContainer = document.getElementById("githubStatus");
+
+    if (!token) {
+        searchBox.disabled = true;
+        packageSelect.disabled = true;
+        
+        // Display notice
+        const notice = document.createElement("p");
+        notice.className = "placeholder";
+        notice.style.color = "red";
+        notice.textContent = "⚠️ Please enter your GitHub Personal Access Token in the Settings dialog to enable search and package loading.";
+        
+        // Append notice near the search box or in a dedicated area if possible.
+        // For simplicity, I'll append it to the search results container for visibility.
+        const results = document.getElementById("sequence");
+        if (!results.querySelector('.pat-notice')) {
+             notice.classList.add('pat-notice');
+             results.prepend(notice);
+        }
+    } else {
+        searchBox.disabled = false;
+        packageSelect.disabled = false;
+        // Remove notice if PAT is now available
+        const notice = document.querySelector('.pat-notice');
+        if (notice) {
+            notice.remove();
+        }
+    }
 }
 
 
