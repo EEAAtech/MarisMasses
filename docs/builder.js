@@ -212,15 +212,30 @@ async function initialise() {
             clearSearch
         );
 
-    loadSettings();
 
+    // Add event listener to the input element with id "massTime"
+    document.getElementById("massTime").addEventListener("input", function(event) {
+        const timeInput = event.target.value;
+        const timeRegex = /^\d{2}:\d{2}$/;
+
+        if (timeRegex.test(timeInput)) {
+            renderSequence();
+        }
+    });
+
+    loadSettings(); //From the localStorage, load the lastMassTime and githubPAT if available
+
+    await tryLoadLibraryNPkgs();
+    checkGithubStatus(); // Check GitHub PAT status and update UI with red notices accordingly
+}
+
+async function tryLoadLibraryNPkgs() {
     try {
         await loadSearchLibrary();
         await loadPackageList();
     } catch (error) {
         console.warn("GitHub data not loaded. A valid PAT is required.", error.message);
     }
-    checkGithubStatus();
 }
 
 function checkGithubStatus() {
@@ -1506,7 +1521,7 @@ async function testConnectionAndSave() {
         closeSettings();
         checkGithubStatus();
         // Load search library immediately after token is verified and saved
-        await loadSearchLibrary();
+        await tryLoadLibraryNPkgs();
     }
 
     catch (err) {
