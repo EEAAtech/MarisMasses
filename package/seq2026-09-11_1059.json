@@ -4,6 +4,46 @@
     "items": [
         {
             "type": "hymn",
+            "folder": "PTL",
+            "file": "037._psalm_18.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps",
+            "text": "Happy is the man who trusts in the Lord"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "n.24_i_give_my_hands.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "g.05_accept_me,_my_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "045._hear_0_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "059._the_magnificat.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "092._give_me_oil_in_my_lamp.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "013._ave_of_lourdes.md"
+        },
+        {
+            "type": "hymn",
             "folder": "OtherHymns",
             "file": "a_sweet_little_song.md",
             "lyrics": "Sing a sweet little song of praise\nto our God, rejoice all our days\n\nLet all creation join in song\nas we sing\nthis sweet little song of praise"
