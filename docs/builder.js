@@ -232,6 +232,7 @@ function checkGithubStatus() {
     if (!token) {
         searchBox.disabled = true;
         packageSelect.disabled = true;
+        openSettings();
         
         // Display notice
         const notice = document.createElement("p");
@@ -239,12 +240,13 @@ function checkGithubStatus() {
         notice.style.color = "red";
         notice.textContent = "⚠️ Please enter your GitHub Personal Access Token in the Settings dialog to enable search and package loading.";
         
+        
         // Append notice near the search box or in a dedicated area if possible.
         // For simplicity, I'll append it to the search results container for visibility.
-        const results = document.getElementById("sequence");
-        if (!results.querySelector('.pat-notice')) {
+        const srchBoxId = document.getElementById("searchResults");
+        if (!srchBoxId.querySelector('.pat-notice')) {
              notice.classList.add('pat-notice');
-             results.prepend(notice);
+             srchBoxId.prepend(notice);
         }
     } else {
         searchBox.disabled = false;
@@ -1502,7 +1504,7 @@ async function testConnectionAndSave() {
         );
 
         closeSettings();
-
+        checkGithubStatus();
         // Load search library immediately after token is verified and saved
         await loadSearchLibrary();
     }
