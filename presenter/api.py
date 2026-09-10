@@ -690,7 +690,7 @@ async def download_package():
     # 9. Install sequence.json locally.
     #
     sequence_path = (
-        PACKAGE_DIR / state_manager.get_current_sequence()
+        PACKAGE_DIR / "sequence.json"
     )
 
     sequence_path.write_text(
