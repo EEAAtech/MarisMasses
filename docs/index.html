@@ -28,243 +28,246 @@
 
     <div class="container">
 
-        <header>
 
-            <h1>Mass Sequence Builder</h1>
+        <div class="column">
 
-        </header>
+            <header>
 
+                <h1>Mass Sequence Builder</h1>
 
-        <!-- ===========================
-         Sequence
-         =========================== -->
+            </header>
 
-        <section class="card">
+            <!-- ===========================
+            Sequence
+            =========================== -->
 
-            <h2>Sequence</h2>
+            <section class="card">
 
-            <div class="toolbar">
+                <h2>Sequence</h2>
 
-                <select id="packageSelect">
+                <div class="toolbar">
 
-                    <option value="">View/edit an existing sequence...</option>
+                    <select id="packageSelect">
 
-                </select>
-
-                <button id="loadPackageButton" disabled>
-
-                    Load
-
-                </button>
-
-            </div>
-
-            <div id="sequence">
-
-                <p class="placeholder">
-
-                    No hymns added.
-
-                </p>
-
-            </div>
-
-        </section>
-
-        <!-- ===========================
-         Mass Information
-         =========================== -->
-
-        <section class="card">
-
-            <h2>Mass</h2>
-
-            <div class="row">
-
-                <label>
-
-                    Date
-
-                    <input id="massDate" type="date">
-
-                </label>
-
-                <label>
-
-                    Time
-
-                    <input id="massTime" type="time">
-
-                </label>
-
-                <label>
-
-                    Optional Holding image (JPG)
-
-                    <input id="massImage" type="file" accept="image/jpeg,.jpg,.jpeg">
-
-                    <small>Required: Ratio of 4:3 with max 1920 px wide x 1440 px high, of at least 72 DPI.</small>
-
-                     
-        
-                    <p id="massImageStatus" class="placeholder">
-        
-                        No image selected.
-        
-                    </p>
-
-                </label>
-
-                <label>
-
-                    <button id="buildButton" disabled>
-
-                        Build Package
-
-                    </button>
-                    <a id="downloadLink" style="display:none">
-
-                    </a>
-                </label>
-
-            </div>
-
-        </section>
-
-
-        <!-- ===========================
-         Hymn Search
-         =========================== -->
-
-        <section class="card">
-
-            <h2>Search Hymns</h2>
-
-            <div class="searchContainer">
-
-                <input id="searchBox" type="text" placeholder="Type hymn title or lyrics...">
-
-                <button id="clearSearchButton" class="clearButton" title="Clear search">
-
-                    ✕
-
-                </button>
-
-            </div>
-
-            <div class="toolbar">
-
-                <button id="newHymnButton">
-
-                    + Hymn
-
-                </button>
-
-                <button id="newResponseButton">
-
-                    + Response
-
-                </button>
-
-            </div>
-
-            <div id="responseEditor" class="hidden">
-
-                <label>
-
-                    Title
-
-                    <input id="responseTitle" type="text">
-
-                </label>
-
-                <label>
-
-                    Response
-
-                    <textarea id="responseText" rows="4"></textarea>
-
-                </label>
-
-                <button id="addResponseButton">
-
-                    Add Response
-
-                </button>
-
-            </div>
-
-            <div id="hymnEditor" class="hidden">
-
-                <h3>New Hymn</h3>
-
-                <label>
-
-                    Title
-
-                    <input id="newHymnTitle" type="text">
-
-                </label>
-
-                <label>
-
-                    Folder
-
-                    <select id="newHymnFolder">
-
-                        <option>OtherHymns</option>
-
-                       <!--  <option>PTL</option>
-
-                        <option>WJL</option>
-
-                        <option>GJ</option> -->
+                        <option value="">View/edit an existing sequence...</option>
 
                     </select>
 
-                </label>
+                    <button id="loadPackageButton" disabled>
 
-                <label>
+                        Load
 
-                    Lyrics (Markdown)
+                    </button>
 
-                    <textarea id="newHymnLyrics" rows="14"
-                        placeholder="Paste the hymn lyrics here"></textarea>
+                </div>
 
-                </label>
+                <div id="sequence">
 
-                <p>
+                    <p class="placeholder">
 
-                    file:
+                        No hymns added.
 
-                    <strong id="filePreview">
+                    </p>
 
-                        —
+                </div>
 
-                    </strong>
+            </section>
 
-                </p>
+            <!-- ===========================
+            Mass Information
+            =========================== -->
 
-                <button id="saveNewHymnButton">
+            <section class="card">
 
-                    Save Hymn
+                <h2>Mass</h2>
 
-                </button>
+                <div class="row">
 
-            </div>
+                    <label>
 
-            <div id="searchResults">
+                        Date
 
-                <p class="placeholder">
+                        <input id="massDate" type="date">
 
-                    Search results will appear here.
+                    </label>
 
-                </p>
+                    <label>
 
-            </div>
+                        Time
 
-        </section>
+                        <input id="massTime" type="time">
 
+                    </label>
+
+                    <label>
+
+                        Optional Holding image (JPG)
+
+                        <input id="massImage" type="file" accept="image/jpeg,.jpg,.jpeg">
+
+                        <small>Required: Ratio of 4:3 with max 1920 px wide x 1440 px high, of at least 72 DPI.</small>
+
+                        
+            
+                        <p id="massImageStatus" class="placeholder">
+            
+                            No image selected.
+            
+                        </p>
+
+                    </label>
+
+                    <label>
+
+                        <button id="buildButton" disabled>
+
+                            Build Package
+
+                        </button>
+                        <a id="downloadLink" style="display:none">
+
+                        </a>
+                    </label>
+
+                </div>
+
+            </section>
+        </div>
+
+        <div class="column">
+            <!-- ===========================
+            Hymn Search
+            =========================== -->
+
+            <section class="card">
+
+                <h2>Search Hymns</h2>
+
+                <div class="searchContainer">
+
+                    <input id="searchBox" type="text" placeholder="Type hymn title or lyrics...">
+
+                    <button id="clearSearchButton" class="clearButton" title="Clear search">
+
+                        ✕
+
+                    </button>
+
+                </div>
+
+                <div class="toolbar">
+
+                    <button id="newHymnButton">
+
+                        + Hymn
+
+                    </button>
+
+                    <button id="newResponseButton">
+
+                        + Response
+
+                    </button>
+
+                </div>
+
+                <div id="responseEditor" class="hidden">
+
+                    <label>
+
+                        Title
+
+                        <input id="responseTitle" type="text">
+
+                    </label>
+
+                    <label>
+
+                        Response
+
+                        <textarea id="responseText" rows="4"></textarea>
+
+                    </label>
+
+                    <button id="addResponseButton">
+
+                        Add Response
+
+                    </button>
+
+                </div>
+
+                <div id="hymnEditor" class="hidden">
+
+                    <h3>New Hymn</h3>
+
+                    <label>
+
+                        Title
+
+                        <input id="newHymnTitle" type="text">
+
+                    </label>
+
+                    <label>
+
+                        Folder
+
+                        <select id="newHymnFolder">
+
+                            <option>OtherHymns</option>
+
+                        <!--  <option>PTL</option>
+
+                            <option>WJL</option>
+
+                            <option>GJ</option> -->
+
+                        </select>
+
+                    </label>
+
+                    <label>
+
+                        Lyrics (Markdown)
+
+                        <textarea id="newHymnLyrics" rows="14"
+                            placeholder="Paste the hymn lyrics here"></textarea>
+
+                    </label>
+
+                    <p>
+
+                        file:
+
+                        <strong id="filePreview">
+
+                            —
+
+                        </strong>
+
+                    </p>
+
+                    <button id="saveNewHymnButton">
+
+                        Save Hymn
+
+                    </button>
+
+                </div>
+
+                <div id="searchResults">
+
+                    <p class="placeholder">
+
+                        Search results will appear here.
+
+                    </p>
+
+                </div>
+
+            </section>
+        </div>
 
     </div>
 
