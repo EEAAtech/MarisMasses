@@ -1,0 +1,32 @@
+{
+    "massDate": "2026-09-11",
+    "massTime": "12:30",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "t.35_holy_virgin,_by_god’s_decree.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "a_sweet_little_song.md",
+            "lyrics": "Sing a sweet little song of praise\nto our God, rejoice all our days\n\nLet all creation join in song\nas we sing\nthis sweet little song of praise"
+        },
+        {
+            "type": "response",
+            "title": "Psalm",
+            "text": "A long psalm is a sweet psalm when sung from the heart"
+        },
+        {
+            "type": "hymn",
+            "folder": "GJL",
+            "file": "q-01_abba!_bapa!.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "010._jesus,_my_lord,_my_god.md"
+        }
+    ]
+}
