@@ -1,0 +1,21 @@
+{
+    "massDate": "2026-09-13",
+    "massTime": "17:50",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "q.10_in_need_of_liberation.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "227._liberation.md"
+        },
+        {
+            "type": "response",
+            "title": "liber theme",
+            "text": "Default holding and Liberation theme"
+        }
+    ]
+}
