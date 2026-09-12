@@ -1,0 +1,37 @@
+{
+    "massDate": "2026-09-13",
+    "massTime": "18:50",
+    "items": [
+        {
+            "type": "response",
+            "title": "Ps ch nh",
+            "text": "Psalm with custom holding and new hymn. Let theme"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "019._let_all_that_is_within_me.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "let_thy_will.md",
+            "lyrics": "Let Thy Will \nbe done in our lives\nnow and evermore\n\nLet the earth\nin Thy embrace abide\nnow and evermore\n\nLet my tongue\nThy praises sing\nnow and evermore"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "174._let_all_proclaim.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "e.26_let_heaven_rejoice.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.103_let_me_live_in_your_house,_0_lord.md"
+        }
+    ]
+}
