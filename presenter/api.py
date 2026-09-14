@@ -211,17 +211,17 @@ async def get_slide():
 
     # Check for sequence-specific holding image
     holding_image = "/static/images/holding.jpg"
-    sequence_path = PACKAGE_DIR / state_manager.get_current_sequence() 
+    sequence_path = state_manager.get_current_sequence() 
+    #sequence_path = PACKAGE_DIR / state_manager.get_current_sequence() 
 
     print(f"Current item: {holding_image}")
-    print(f"Checking for holding image in {sequence_path}")
-    if sequence_path.exists():
-        try:
-            
-            orig_name = sequence_path.name
-            print(f"Original filename from {sequence_path}: {orig_name}")
-            if orig_name:
-                expected_jpg = orig_name.replace(".json", ".jpg").replace("seq", "holding")
+    orig_name = sequence_path
+    expected_jpg = orig_name.replace(".json", ".jpg").replace("seq", "holding")
+    print(f"Checking for {expected_jpg} holding image from {sequence_path}")
+
+    
+    if orig_name:
+        try:                    
                 print(f"Expected holding image: {STATIC_DIR / 'images' / expected_jpg}")
                 if (STATIC_DIR / "images" / expected_jpg).exists():
                     holding_image = "/static/images/" + expected_jpg
