@@ -3,14 +3,14 @@
     "massTime": "10:50",
     "items": [
         {
-            "type": "response",
-            "title": "Ps ch nh",
-            "text": "Psalm with custom holding and new hymn. Let theme"
-        },
-        {
             "type": "hymn",
             "folder": "PTL",
             "file": "019._let_all_that_is_within_me.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps",
+            "text": "Ps and default holding"
         },
         {
             "type": "hymn",
