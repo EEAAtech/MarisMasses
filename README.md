@@ -44,6 +44,16 @@ Open
 http://localhost:8000
 
 
+Check if active and kill if needed
+```bash
+sudo lsof -i :8000
+curl -I http://127.0.0.1:8000
+
+sudo kill -9 $(sudo lsof -t -i:8000)
+kill PID_NUMBER_HERE
+```
+
+
 Expired Sequence files must be archived in order to speed up the search for the nearest future file. We need a PAT of git to archive past sequence files. This archiving process must be run on the host of the Presenter App so that its system time will be used for Archiving (rather than the Git Pages time of Builder).
 To make them permanent across all future sessions, append your export statement to one of your shell initialization files
 
