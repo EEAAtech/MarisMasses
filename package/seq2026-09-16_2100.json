@@ -1,0 +1,12 @@
+{
+    "massDate": "2026-09-16",
+    "massTime": "21:00",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "a_sample.md",
+            "lyrics": "Hyn to check progress bar"
+        }
+    ]
+}
