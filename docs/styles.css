@@ -444,3 +444,28 @@ select {
 .hidden {
     display: none !important;
 }
+
+/* ==========================================
+   Loading State Overlay
+========================================== */
+.processing-overlay {
+    /* Dim the background when processing */
+    filter: brightness(0.85);
+    transition: filter 0.3s ease;
+}
+
+#processingIndicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* High z-index to cover content */
+    color: white;
+    font-size: 2em;
+    backdrop-filter: blur(2px);
+}

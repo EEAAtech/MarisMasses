@@ -685,7 +685,7 @@ function addResponse() {
 // Build the sequence.json file and download it.
 //
 async function buildPackage() {
-
+    setProcessingState(true);
     const massDate = document
         .getElementById("massDate")
         .value;
@@ -777,6 +777,9 @@ async function buildPackage() {
 
         return;
 
+    }
+    finally {
+        clearProcessingState();
     }
 
     localStorage.setItem(
@@ -1255,15 +1258,11 @@ function updatefilePreview() {
 }
 
 async function saveNewHymn() {
-
+    setProcessingState(true);
     const title = document
         .getElementById("newHymnTitle")
         .value
         .trim();
-
-    const folder = document
-        .getElementById("newHymnFolder")
-        .value;
 
     const lyrics = document
         .getElementById("newHymnLyrics")
@@ -1392,6 +1391,9 @@ async function saveNewHymn() {
 
         alert(err.message);
 
+    }
+    finally {
+        clearProcessingState();
     }
 
 }
@@ -2009,4 +2011,41 @@ async function uploadPackage(packageObject) {
 
     }
 
+}
+
+// Function to set the application state to 'Processing'
+function setProcessingState(isProcessing) {
+    const controls = document.querySelectorAll(
+        'button:not(.addButton):not(.expandButton):not(.upButton):not(.downButton):not(.deleteButton), #newHymnButton, #saveNewHymnButton, #buildButton'
+    );
+    
+    const statusContainer = document.getElementById("githubStatus");
+    const sequencePanel = document.getElementById("sequence");
+    const searchBox = document.getElementById("searchBox");
+    const packageSelect = document.getElementById("packageSelect");
+
+    // General form element control disabling
+    controls.forEach(button => {
+        button.disabled = isProcessing;
+    });
+
+    searchBox.disabled = isProcessing;
+    packageSelect.disabled = isProcessing;
+    
+    // Show/hide processing visual indicator
+    const progressIndicator = document.getElementById("processingIndicator");
+    if (progressIndicator) {
+        progressIndicator.style.display = isProcessing ? 'block' : 'none';
+    } else {
+        // If element doesn't exist, create a placeholder notice (Requires CSS setup)
+        console.warn("Processing indicator element not found. Controls disabled manually.");
+    }
+    
+    // Optionally, add a class to body/main container for overall dimming effect
+    document.body.classList.toggle('processing-overlay', isProcessing);
+}
+
+// Helper to clear state
+function clearProcessingState() {
+    setProcessingState(false);
 }
