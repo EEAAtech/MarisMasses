@@ -1,0 +1,22 @@
+{
+    "massDate": "2026-09-16",
+    "massTime": "10:09",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "079._holy_god_we_praise_thy_name.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "let_thy_will.md",
+            "lyrics": "Let Thy Will \nbe done in our lives\nnow and evermore\n\nLet the earth\nin Thy embrace abide\nnow and evermore\n\nLet my tongue\nThy praises sing\nnow and evermore"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "158._god_said_set_my_people.md"
+        }
+    ]
+}
