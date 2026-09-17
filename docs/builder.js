@@ -14,13 +14,13 @@ const sequence = [];
 //
 // Holding image required dimensions (pixels) and minimum resolution.
 //
-const MASS_IMAGE_WIDTH = 640;
+const MASS_IMAGE_WIDTH = 1280;
 
-const MASS_IMAGE_HEIGHT = 480;
+const MASS_IMAGE_HEIGHT = 720;
 
-const MASS_IMAGE_MAX_WIDTH = 1920;
+const MASS_IMAGE_MAX_WIDTH = 3840;
 
-const MASS_IMAGE_MAX_HEIGHT = 1440;
+const MASS_IMAGE_MAX_HEIGHT = 2160;
 
 const MASS_IMAGE_MIN_DPI = 72;
 
@@ -844,7 +844,7 @@ async function handleMassImageSelect(event) {
         ) {
 
             throw new Error(
-                `Image must be within ${MASS_IMAGE_WIDTH}x${MASS_IMAGE_HEIGHT} to ${MASS_IMAGE_MAX_WIDTH}x${MASS_IMAGE_MAX_HEIGHT} in a  (4:3) ratio ` +
+                `Image must be within ${MASS_IMAGE_WIDTH}x${MASS_IMAGE_HEIGHT} to ${MASS_IMAGE_MAX_WIDTH}x${MASS_IMAGE_MAX_HEIGHT} in a  (16:9) ratio ` +
                 `(this image is ${info.width || "?"}x${info.height || "?"}).`
             );
 
