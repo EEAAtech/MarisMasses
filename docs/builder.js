@@ -155,7 +155,7 @@ function search(event) {
     });
 }
 
-function addToSequence(hymn, rowElement) {
+export function addToSequence(hymn, rowElement) {
     DataMgr.sequence.push({
         type: "hymn",
         folder: hymn.folder,
