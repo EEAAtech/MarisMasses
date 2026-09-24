@@ -383,7 +383,7 @@ async function uploadPackage(packageObject) {
 async function handleMassImageSelect(event) {
     const file = event.target.files[0];
     const status = document.getElementById("massImageStatus");
-    DataMgr.massImageBuffer = null;
+    DataMgr.setMassImageBuffer(null);
 
     if (!file) {
         status.textContent = "No image selected.";
@@ -423,10 +423,12 @@ async function handleMassImageSelect(event) {
             throw new Error(`Image resolution (${dpi} dpi) is too low. Please provide at least ${MASS_IMAGE_CONFIG.MIN_DPI} dpi.`);
         }
 
-        DataMgr.massImageBuffer = ImageProc.forceJpegDpi(
-            arrayBuffer,
-            MASS_IMAGE_CONFIG.TARGET_DPI,
-            info.jfifOffset
+        DataMgr.setMassImageBuffer(
+            ImageProc.forceJpegDpi(
+                arrayBuffer,
+                MASS_IMAGE_CONFIG.TARGET_DPI,
+                info.jfifOffset
+            )
         );
 
         status.textContent = `Image ready (${info.width}x${info.height}, ${MASS_IMAGE_CONFIG.TARGET_DPI} dpi).`;
@@ -436,7 +438,7 @@ async function handleMassImageSelect(event) {
         console.error(error);
         alert(error.message);
         event.target.value = "";
-        DataMgr.massImageBuffer = null;
+        DataMgr.setMassImageBuffer(null);
         status.textContent = "No image selected.";
         status.className = "placeholder";
     }

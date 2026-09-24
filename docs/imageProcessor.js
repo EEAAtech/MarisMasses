@@ -15,7 +15,12 @@ export function readJpegInfo(arrayBuffer) {
 
         const length = view.getUint16(offset + 2);
         if (marker === 0xE0 && length >= 14) {
-            const id = String.fromCharCode(...Array.from(view.slice(offset + 4, offset + 8)));
+            const id = String.fromCharCode(
+            view.getUint8(offset + 4),
+            view.getUint8(offset + 5),
+            view.getUint8(offset + 6),
+            view.getUint8(offset + 7)
+        )
             if (id === "JFIF") {
                 jfifOffset = offset;
                 const units = view.getUint8(offset + 11);
@@ -29,7 +34,12 @@ export function readJpegInfo(arrayBuffer) {
             }
         }
         if (marker === 0xE1 && length >= 8 && dpiX === null) {
-            const id = String.fromCharCode(...Array.from(view.slice(offset + 4, offset + 8)));
+            const id = String.fromCharCode(
+                view.getUint8(offset + 4),
+                view.getUint8(offset + 5),
+                view.getUint8(offset + 6),
+                view.getUint8(offset + 7)
+            );
             if (id === "Exif") {
                 const exif = readExifResolution(view, offset + 10);
                 if (exif) { dpiX = exif.dpiX; dpiY = exif.dpiY; }

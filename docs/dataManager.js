@@ -2,7 +2,12 @@ import { loadGitHubJson, uploadTextFile } from './api.js';
 
 export let searchLibrary = [];
 export let sequence = [];
+// dataManager.js
 export let massImageBuffer = null;
+
+export function setMassImageBuffer(value) {
+    massImageBuffer = value;
+}
 
 export async function loadSearchLibrary() {
     const core = await loadGitHubJson("builder/search-index.json");
