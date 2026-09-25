@@ -407,7 +407,7 @@ async function handleMassImageSelect(event) {
         const actualRatio = info.width && info.height ? info.width / info.height : null;
 
         if (actualRatio === null || Math.abs(actualRatio - targetRatio) > MASS_IMAGE_CONFIG.RATIO_TOLERANCE) {
-            throw new Error(`Image must be within ${MASS_IMAGE_CONFIG.WIDTH}x${MASS_IMAGE_CONFIG.HEIGHT} in a (16:9) ratio.`);
+            throw new Error(`Image must be in a (16:9) ratio.`);
         }
 
         if (info.width < MASS_IMAGE_CONFIG.WIDTH || info.height < MASS_IMAGE_CONFIG.HEIGHT) {
