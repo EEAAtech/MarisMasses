@@ -4,14 +4,14 @@
     "items": [
         {
             "type": "hymn",
-            "folder": "OtherHymns",
-            "file": "of_all_the_wonders.md",
-            "lyrics": "Of all the wonders\nthis world hath begot\nthere is none so filling\nas time with Thee"
+            "folder": "WJL",
+            "file": "z.030_confident_prayer_in_distress.md"
         },
         {
             "type": "hymn",
-            "folder": "WJL",
-            "file": "z.030_confident_prayer_in_distress.md"
+            "folder": "OtherHymns",
+            "file": "of_all_the_wonders.md",
+            "lyrics": "Of all the wonders\nthis world hath begot\nthere is none so filling\nas time with Thee"
         },
         {
             "type": "response",
