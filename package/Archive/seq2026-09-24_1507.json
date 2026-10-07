@@ -1,0 +1,31 @@
+{
+    "massDate": "2026-09-24",
+    "massTime": "15:07",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "247._i_will_praise_thee.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "250._lamb_of_god_(israeli_mass).md"
+        },
+        {
+            "type": "response",
+            "title": "Ps",
+            "text": "Oh the Love of the Lord"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "045._hear_0_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "063._praise_to_the_lord.md"
+        }
+    ]
+}
