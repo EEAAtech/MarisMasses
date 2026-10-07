@@ -1,0 +1,21 @@
+{
+    "massDate": "2026-09-24",
+    "massTime": "15:09",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "250._lamb_of_god_(israeli_mass).md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "045._hear_0_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "063._praise_to_the_lord.md"
+        }
+    ]
+}
