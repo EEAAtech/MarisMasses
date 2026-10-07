@@ -1,0 +1,21 @@
+{
+    "massDate": "2026-10-07",
+    "massTime": "15:00",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "z.030_confident_prayer_in_distress.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps",
+            "text": "Come back to me with all your heart"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "g.54_come_back,_my_love.md"
+        }
+    ]
+}
