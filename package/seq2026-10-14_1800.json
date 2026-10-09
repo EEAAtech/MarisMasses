@@ -1,0 +1,32 @@
+{
+    "massDate": "2026-10-14",
+    "massTime": "18:00",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.102_on_we_go.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "lord_have_mercy.md",
+            "lyrics": "Lord have mercy\nLord have mercy\n\nChrist have mercy\nChrist have mercy\n\nLord have mercy\nLord have mercy"
+        },
+        {
+            "type": "response",
+            "title": "Ps",
+            "text": "The Lord is my light and my salvation"
+        },
+        {
+            "type": "response",
+            "title": "POF",
+            "text": "Lord hear us"
+        },
+        {
+            "type": "hymn",
+            "folder": "GJL",
+            "file": "r-35_sonvskarak_itlea_vortea.md"
+        }
+    ]
+}
