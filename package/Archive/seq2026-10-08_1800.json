@@ -1,0 +1,37 @@
+{
+    "massDate": "2026-10-08",
+    "massTime": "18:00",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "255._the_celebration_song.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "336._i_have_made_a_covenant.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps1",
+            "text": "Rejoice in the Lord always! \nAnd again I say rejoice"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.078_be_glad,_0_people.md"
+        },
+        {
+            "type": "response",
+            "title": "POF",
+            "text": "In Your love, hear us Oh Lord"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "sing_in_gladness.md",
+            "lyrics": "Protocol Overhead: Network packets include framing, headers, and control data (TCP/IP overhead) that consume about 5% to 6% of the raw line rate, leaving a maximum theoretical payload capacity of roughly 940 to 950 Mbps.\n\nHardware Bottlenecks: Real-world speeds also depend on your computer's network interface card (NIC), the CPU load, and the speed of your storage drives when transferring local files.\n\nCabling Issues: Using older cables like Cat5 instead of Cat5e, Cat6, or higher can force your connection speed to drop down to the 100 Mbps tier"
+        }
+    ]
+}
