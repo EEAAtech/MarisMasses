@@ -1,0 +1,22 @@
+{
+    "massDate": "2026-10-09",
+    "massTime": "16:20",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "sing_in_gladness.md",
+            "lyrics": "Protocol Overhead: Network packets include framing, headers, and control data (TCP/IP overhead) that consume about 5% to 6% of the raw line rate, leaving a maximum theoretical payload capacity of roughly 940 to 950 Mbps.\n\nHardware Bottlenecks: Real-world speeds also depend on your computer's network interface card (NIC), the CPU load, and the speed of your storage drives when transferring local files.\n\nCabling Issues: Using older cables like Cat5 instead of Cat5e, Cat6, or higher can force your connection speed to drop down to the 100 Mbps tier"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "239._thou_hast_turned.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "211._out_of_my_bondage.md"
+        }
+    ]
+}
