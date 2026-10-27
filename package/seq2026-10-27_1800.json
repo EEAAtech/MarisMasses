@@ -13,6 +13,11 @@
             "file": "035._my_soul_doth_magnify_the_lord.md"
         },
         {
+            "type": "response",
+            "title": "Ps1",
+            "text": "A song of thanksgiving"
+        },
+        {
             "type": "hymn",
             "folder": "PTL",
             "file": "046._great_and_wonderful.md"
