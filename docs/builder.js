@@ -339,8 +339,8 @@ async function buildPackage() {
     };
 
     try {
-        await uploadPackage(packageObject);
-        alert("Mass sequence uploaded successfully.");
+        const uploaded = await uploadPackage(packageObject);
+        if (uploaded) alert("Mass sequence uploaded successfully.");
     }
     catch (error) {
         console.error("Upload failed:", error);
@@ -357,6 +357,20 @@ async function uploadPackage(packageObject) {
     const time = packageObject.massTime.replace(":", "");
     const filename = `seq${date}_${time}.json`;
     const path = `package/${filename}`;
+
+    const existingPackage = await API.githubRequest(
+        `https://api.github.com/repos/${GITHUB_CONFIG.OWNER}/${GITHUB_CONFIG.PUBLIC_REPO_NAME}/contents/${path}?ref=${GITHUB_CONFIG.BRANCH}`
+    );
+
+    if (existingPackage.status !== 404) {
+        if (!existingPackage.ok) {
+            throw new Error(`Unable to check whether the package already exists (HTTP ${existingPackage.status}).`);
+        }
+
+        if (!window.confirm(`A package named "${filename}" already exists on the server. Are you sure you want to replace it?`)) {
+            return false;
+        }
+    }
 
     await API.uploadTextFile(
         path,
@@ -375,6 +389,8 @@ async function uploadPackage(packageObject) {
             GITHUB_CONFIG.PUBLIC_REPO_NAME
         );
     }
+
+    return true;
 }
 
 //
