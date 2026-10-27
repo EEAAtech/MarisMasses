@@ -1,0 +1,26 @@
+{
+    "massDate": "2026-10-27",
+    "massTime": "18:43",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "(c_)c.73_thy_loving_kindness.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps1",
+            "text": "A song of thanksgiving"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "035._my_soul_doth_magnify_the_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "046._great_and_wonderful.md"
+        }
+    ]
+}
