@@ -8,6 +8,11 @@
             "file": "(c_)c.73_thy_loving_kindness.md"
         },
         {
+            "type": "response",
+            "title": "Ps1",
+            "text": "A song of thanksgiving"
+        },
+        {
             "type": "hymn",
             "folder": "PTL",
             "file": "035._my_soul_doth_magnify_the_lord.md"
