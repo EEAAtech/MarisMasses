@@ -1,0 +1,32 @@
+{
+    "massDate": "2026-10-31",
+    "massTime": "18:00",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.101_come_let_us_go.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "gloria.md",
+            "lyrics": "Glory to God in the highest\nAnd peace to His people on earth\nLord God, Heavenly King, \nAlmighty God and Father\nWe worship You\nWe give You thanks\nWe praise You for Your glory\n\nGlory to you Jesus Christ, \nOnly Son of the Father\nLord God, Lamb of God\nYou take away our sins \nHave mercy on us\nAnd receive our prayer\n\nYou alone are the Holy One\nYou alone are the Lord\nYou alone are the Most High\nJesus Christ\nWith the Holy Spirit\nIn the glory of God the Father\n\nAmen"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "b.34_come_to_the_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "052._whatsoever_you_do.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "u.5_trust_in_the_lord.md"
+        }
+    ]
+}
