@@ -1,0 +1,36 @@
+{
+    "massDate": "2026-11-07",
+    "massTime": "18:30",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.120_the_steadfast_love.md"
+        },
+        {
+            "type": "response",
+            "title": "Kyrie",
+            "text": "Kyrie eleison, \nLord have mercy (2)\nChristi eleison, \nChrist have mercy (2)\nKyrie eleison,\nLord have mercy (2)"
+        },
+        {
+            "type": "response",
+            "title": "Gloria",
+            "text": "Glory to God in the highest,\nand on earth peace to people of good will.\nWe praise you, we bless you, \nwe adore you, we glorify you.\nWe give you thanks for your great glory,\nLord God, heavenly King, \nO God, almighty Father.\n\nGlory to God in the highest,\nand on earth peace to people of good will.\nLord Jesus Christ, only Begotten Son,\nLord God, Lamb of God, Son of the Father,\nYou take away the sins of the world\n have mercy on us;\nYou take away the sins of the world,\n receive our prayer;\nYou are seated at the right hand of the Father:\n have mercy on us.\n\nGlory to God in the highest,\nand on earth peace to people of good will.\nFor you alone are the Holy One,\nYou alone are the Lord,\nYou alone are the Most High, Jesus Christ,\nWith the Holy Spirit, in the glory of God the Father.\nAmen, Amen, Amen \nGlory to God in the highest,\nand on earth peace to people of good will.\nAnd on earth peace to people of good will."
+        },
+        {
+            "type": "response",
+            "title": "Acclamation",
+            "text": "For you my soul is thirsting, O Lord, my God."
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "b.35_we_offer_you.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "092._give_me_oil_in_my_lamp.md"
+        }
+    ]
+}
