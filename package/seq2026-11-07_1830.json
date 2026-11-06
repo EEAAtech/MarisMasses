@@ -29,6 +29,11 @@
         },
         {
             "type": "hymn",
+            "folder": "WJL",
+            "file": "l.13_be_still_and_know.md"
+        },
+        {
+            "type": "hymn",
             "folder": "PTL",
             "file": "092._give_me_oil_in_my_lamp.md"
         }
