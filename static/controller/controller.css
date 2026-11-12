@@ -146,6 +146,7 @@ body{
 
     min-height:60vh;
 
+    height:calc(100vh - 10px);
 }
 
 #main{
@@ -160,11 +161,15 @@ body{
 
     flex:3 0 0;
 
-    overflow-y:auto;
+    overflow:hidden;
 
     border-left:2px solid #555555;
 
     padding-left:20px;
+
+    display:flex;
+
+    flex-direction:column;
 
 }
 
@@ -176,7 +181,7 @@ body{
 
     font-weight:bold;
 
-    margin-bottom:20px;
+    margin-top:20px;
 
 }
 
@@ -227,5 +232,57 @@ body{
     color:white;
 
     border:4px solid white !important;
+
+}
+
+/*
+
+ * Top pane of the right pane:
+
+ * Shows the sequence list and fills all of the
+
+ * remaining height of the right pane.
+
+ */
+
+#sequencePane{
+
+    flex:1 1 0;
+
+    overflow-y:auto;
+
+    min-height:0;
+
+}
+
+/*
+
+ * Bottom pane of the right pane:
+
+ * Shows the MassCast client in an iframe.
+
+ * Its height is derived from its width so the
+
+ * pane keeps a 16:9 width-to-height ratio.
+
+ */
+
+#clientPane{
+
+    flex:0 0 auto;
+
+    aspect-ratio:16 / 9;
+
+}
+
+#clientPane iframe{
+
+    width:100%;
+
+    height:100%;
+
+    border:none;
+
+    display:block;
 
 }

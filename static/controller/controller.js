@@ -324,6 +324,39 @@ events.onmessage =
 
 
 
+/*
+
+ * Keep the bottom pane of the right pane at a
+
+ * 16:9 width-to-height ratio by deriving its
+
+ * height from its width.
+
+ */
+
+const clientPane =
+
+    document.getElementById("clientPane");
+
+function resizeClientPane() {
+
+    clientPane.style.height =
+
+        Math.floor(
+
+            clientPane.clientWidth * 9 / 16
+
+        ) + "px";
+
+}
+
+window.addEventListener("load", resizeClientPane);
+
+window.addEventListener("resize", resizeClientPane);
+
+resizeClientPane();
+
+
 async function downloadPackage() {
 
     const button =

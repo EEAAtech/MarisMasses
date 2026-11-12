@@ -4,69 +4,77 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<title>MassCast Controller</title>
+    <title>MassCast Controller</title>
 
-<link rel="stylesheet"
-href="/static/controller/controller.css">
+    <link rel="stylesheet" href="/static/controller/controller.css">
 
 </head>
 
 <body>
 
-<div id="shell">
+    <div id="shell">
 
-    <div id="main">
+        <div id="main">
 
-        <div id="title"></div>
-
-
-<div id="download">
-    
-    <button id="downloadPackage">
-        
-        ⬇ Download
-        
-    </button>
-    
-</div>
+            <div id="title"></div>
 
 
-<div id="navigation">
-    
-    <button id="previousItem">
-        
-        ⏮ Hymn
-        
-    </button>
-    
-    <button id="nextItem">
-        
-        Hymn ⏭
-        
-    </button>
-    
-</div>
+            <div id="download">
 
-<div id="slideButtons"></div>
+                <button id="downloadPackage">
+
+                    ⬇ Download
+
+                </button>
+
+            </div>
+
+
+            <div id="navigation">
+
+                <button id="previousItem">
+
+                    ⏮ Hymn
+
+                </button>
+
+                <button id="nextItem">
+
+                    Hymn ⏭
+
+                </button>
+
+            </div>
+
+            <div id="slideButtons"></div>
+
+        </div>
+
+        <div id="sequence">
+
+            <div id="clientPane">
+
+                <iframe id="clientFrame" src="http://localhost:8000/client" title="MassCast Client">
+                </iframe>
+
+            </div>
+
+            <div id="sequencePane">
+
+                <div id="sequenceTitle">Sequence</div>
+
+                <ul id="sequenceList"></ul>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <div id="sequence">
-
-        <div id="sequenceTitle">Sequence</div>
-
-        <ul id="sequenceList"></ul>
-
-    </div>
-
-</div>
-
-<script
-type="module"
-src="/static/controller/controller.js">
-</script>
+    <script type="module" src="/static/controller/controller.js">
+    </script>
 
 </body>
 
