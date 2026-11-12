@@ -423,7 +423,7 @@ function slideButtonLabel(slide) {
 
     const words = text.split(" ");
 
-    const maxWords = 8;
+    const maxWords = 18;
 
     if (words.length <= maxWords) {
         return words.join(" ");
