@@ -3,7 +3,7 @@ import { getCurrentSlide } from "/static/common/api.js";
 const container = document.getElementById("slide");
 
 // Keep this in sync with the transition duration in the CSS.
-const TRANSITION_MS = 300;
+const TRANSITION_MS = 100;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
