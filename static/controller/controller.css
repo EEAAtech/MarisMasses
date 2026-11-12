@@ -131,3 +131,101 @@ body{
 
     font-size:28px;
 }
+
+/*
+ * Split the controller into two panes:
+ * 70% for the existing controller controls,
+ * 30% for the read-only sequence list.
+ */
+
+#shell{
+
+    display:flex;
+
+    gap:20px;
+
+    min-height:60vh;
+
+}
+
+#main{
+
+    flex:7 0 0;
+
+    overflow-y:auto;
+
+}
+
+#sequence{
+
+    flex:3 0 0;
+
+    overflow-y:auto;
+
+    border-left:2px solid #555555;
+
+    padding-left:20px;
+
+}
+
+#sequenceTitle{
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    margin-bottom:20px;
+
+}
+
+#sequenceList{
+
+    list-style:none;
+
+    margin:0;
+
+    padding:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+#sequenceList li{
+
+    padding:10px 16px;
+
+    font-size:20px;
+
+    text-align:left;
+
+    border:2px solid transparent;
+
+    border-radius:10px;
+
+    cursor:default;
+
+    color:#202020;
+
+    background:#eeeeee;
+
+    line-height:1.25;
+
+    user-select:none;
+
+}
+
+#sequenceList li.selected{
+
+    background:#2d7cff !important;
+
+    color:white;
+
+    border:4px solid white !important;
+
+}

@@ -10,7 +10,9 @@ import {
 
     showHolding,
 
-    hideHolding
+    hideHolding,
+
+    getSequence
 
 
 }
@@ -146,6 +148,115 @@ async function refreshController() {
 
     currentSlideIndex =
         slide.currentSlideIndex;
+    await refreshSequence();
+
+
+async function refreshSequence() {
+
+    let sequence;
+
+    try {
+
+        sequence = await getSequence();
+
+    }
+
+    catch (error) {
+
+        console.error("Failed to load sequence:", error);
+
+        return;
+
+    }
+
+    const panel =
+
+        document.getElementById("sequenceList");
+
+    const currentItemIndex =
+
+        sequence.currentItemIndex;
+
+    panel.innerHTML = "";
+
+    sequence.items.forEach((item, index) => {
+
+        const listItem =
+
+            document.createElement("li");
+
+        listItem.textContent =
+
+            sequenceItemLabel(index, item);
+
+        listItem.dataset.index = index;
+
+        listItem.classList.toggle(
+
+            "selected",
+
+            index === currentItemIndex
+
+        );
+
+        panel.appendChild(listItem);
+
+    });
+
+}
+
+/*
+
+ * Build a display label for a sequence item.
+
+ * Hymns are identified by their file name,
+
+ * responses by their title.
+
+ */
+
+function sequenceItemLabel(index, item) {
+
+    let label = "";
+
+    if (item.title) {
+
+        label = item.title;
+
+    }
+
+    else if (item.file) {
+
+        label = item.file
+
+            .replace(/\.md$/, "")
+
+            .replace(/_/g, " ")
+
+            .split(" ")
+
+            .map(part =>
+
+                part.charAt(0).toUpperCase() +
+
+                part.slice(1)
+
+            )
+
+            .join(" ");
+
+    }
+
+    else {
+
+        label = item.type;
+
+    }
+
+    return `${index + 1}. ${label}`;
+
+}
+
 
 }
 

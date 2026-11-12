@@ -187,6 +187,32 @@ async def get_state():
     return state_manager.get_state().to_dict()
 
 
+@router.get("/sequence")
+async def get_sequence():
+    """
+    Return the currently loaded sequence together with the
+    index of the item currently being displayed.
+    """
+
+    sequence = sequence_repository.load()
+
+    state = state_manager.state
+
+    currentItemIndex = state.currentItemIndex
+
+    if currentItemIndex < 0 or currentItemIndex >= len(sequence):
+
+        currentItemIndex = -1
+
+    return {
+
+        "items": sequence,
+
+        "currentItemIndex": currentItemIndex
+
+    }
+
+
 @router.get("/slide")
 async def get_slide():
     """

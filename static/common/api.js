@@ -6,6 +6,14 @@ export async function getState() {
 }
 
 
+export async function getSequence() {
+
+    const response = await fetch("/api/sequence");
+
+    return await response.json();
+}
+
+
 export async function getCurrentSlide() {
 
     const response = await fetch("/api/slide");
