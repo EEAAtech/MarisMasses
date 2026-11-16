@@ -1,0 +1,31 @@
+{
+    "massDate": "2026-11-16",
+    "massTime": "07:00",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.119_as_we_gather.md"
+        },
+        {
+            "type": "response",
+            "title": "Psalm",
+            "text": "To the one who conquers, I will grant to eat of the tree of life."
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "b.2_take_thou_the_offering.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "d.027_whatsoever_you_do.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "c.29_i_will_sing_of_the_mercies.md"
+        }
+    ]
+}
