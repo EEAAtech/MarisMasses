@@ -1,0 +1,17 @@
+{
+    "massDate": "2026-11-16",
+    "massTime": "16:30",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "gloria_glory_to_god_in_the_highest.md",
+            "lyrics": "Glory to God in the highest\nAnd peace to His people on earth\nLord God, Heavenly King, \nAlmighty God and Father\nWe worship You\nWe give You thanks\nWe praise You for Your glory\n\nGlory to you Jesus Christ, \nOnly Son of the Father\nLord God, Lamb of God\nYou take away our sins \nHave mercy on us\nAnd receive our prayer\n\nYou alone are the Holy One\nYou alone are the Lord\nYou alone are the Most High\nJesus Christ\nWith the Holy Spirit\nIn the glory of God the Father\n\nAmen, Amen, Amen"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "x.28_ring_out_your_joy.md"
+        }
+    ]
+}
