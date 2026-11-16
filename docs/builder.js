@@ -124,6 +124,7 @@ function search(event) {
             <div class="resultHeader">
                 <button class="addButton" title="Add to sequence">+</button>
                 <button class="expandButton" title="Toggle lyrics">👁️</button>
+                <button class="editButton" title="Edit lyrics">✏️</button>
                 <div class="resultText">
                     <strong>${hymn.title}</strong>
                     <span>${hymn.folder}</span>
@@ -135,12 +136,15 @@ function search(event) {
         row.querySelector(".addButton").addEventListener("click", () => addToSequence(hymn, row));
 
         const expandButton = row.querySelector(".expandButton");
+        const editButton = row.querySelector(".editButton");
         const lyricsBox = row.querySelector(".lyricsContainer");
+
+        let isEditing = false;
 
         expandButton.addEventListener("click", () => {
             const isHidden = lyricsBox.classList.contains("hidden");
             if (isHidden) {
-                if (!lyricsBox.textContent) {
+                if (!lyricsBox.textContent && !isEditing) {
                     lyricsBox.textContent = hymn.lyrics || "No lyrics available.";
                 }
                 lyricsBox.classList.remove("hidden");
@@ -148,6 +152,54 @@ function search(event) {
             } else {
                 lyricsBox.classList.add("hidden");
                 expandButton.textContent = "👁️";
+            }
+        });
+
+        editButton.addEventListener("click", async () => {
+            if (!isEditing) {
+                // Enter edit mode: show an editable textarea and switch the button to save.
+                isEditing = true;
+                editButton.textContent = "💾";
+                editButton.title = "Save changes";
+
+                const textarea = document.createElement("textarea");
+                textarea.className = "editLyrics";
+                textarea.rows = 8;
+                textarea.value = hymn.lyrics || "";
+
+                lyricsBox.innerHTML = "";
+                lyricsBox.appendChild(textarea);
+                lyricsBox.classList.remove("hidden");
+                textarea.focus();
+            } else {
+                // Save the edited lyrics.
+                const textarea = lyricsBox.querySelector("textarea");
+                const newLyrics = textarea.value.trim();
+                if (!newLyrics) {
+                    alert("Lyrics cannot be empty.");
+                    return;
+                }
+
+                UI.setProcessingState(true);
+                try {
+                    await DataMgr.updateHymnLyrics(hymn, newLyrics);
+                    hymn.lyrics = newLyrics;
+
+                    editButton.textContent = "✏️";
+                    editButton.title = "Edit lyrics";
+                    isEditing = false;
+
+                    lyricsBox.textContent = newLyrics;
+                    lyricsBox.classList.remove("hidden");
+                    expandButton.textContent = "🙈";
+
+                    alert("Lyrics saved successfully.");
+                } catch (err) {
+                    console.error(err);
+                    alert(err.message);
+                } finally {
+                    UI.setProcessingState(false);
+                }
             }
         });
 
