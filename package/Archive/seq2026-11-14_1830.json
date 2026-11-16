@@ -1,0 +1,49 @@
+{
+    "massDate": "2026-11-14",
+    "massTime": "18:30",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.017(a)_all_peoples_of_the_universe.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "kyrie_lord_god_have_mercy_on_us.md",
+            "lyrics": "Lord God have mercy on us (2)\nChristi eleison, eleison, eleison (2)\nSomia kaklut kor,\nSomia kaklut kor"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "gloria_glory_to_god_in_the_highest.md",
+            "lyrics": "Glory to God in the highest\nAnd peace to His people on earth\nLord God, Heavenly King, \nAlmighty God and Father\nWe worship You\nWe give You thanks\nWe praise You for Your glory\n\nGlory to you Jesus Christ, \nOnly Son of the Father\nLord God, Lamb of God\nYou take away our sins \nHave mercy on us\nAnd receive our prayer\n\nYou alone are the Holy One\nYou alone are the Lord\nYou alone are the Most High\nJesus Christ\nWith the Holy Spirit\nIn the glory of God the Father\n\nAmen"
+        },
+        {
+            "type": "response",
+            "title": "Acclamation",
+            "text": "Blessed are all who fear the Lord"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "n.24_i_give_my_hands.md"
+        },
+        {
+            "type": "response",
+            "title": "Prayer of the faithful",
+            "text": "Lord, graciously hear us."
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "n.20_our_hearts_were_made_for_you.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "go_the_mass_is_ended.md",
+            "lyrics": "1. Go, the Mass is ended, children of the Lord. \nTake his word to others as you've heard it spoken to you, \nGo, the Mass is ended, go and tell the world: \nThe Lord is good, the Lord is kind. \nAnd he loves every one.\n\n2. Go, the Mass is ended, take his love to all. \nGladden all who meet you, \nFill their hearts with hope and courage. \nGo, the Mass is ended, fill the world with love: \nAnd give to all what you've received: \nThe peace and joy of Christ.\n\n3. Go, the Mass is ended, strengthened in the Lord, \nLighten every burden, \nSpread the joy of Christ around you, \nGo, the Mass is ended, take his peace to all."
+        }
+    ]
+}
