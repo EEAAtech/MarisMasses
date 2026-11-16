@@ -5,6 +5,18 @@ export let sequence = [];
 // dataManager.js
 export let massImageBuffer = null;
 
+// Tracks hymns whose lyrics have been edited, so only modified hymns
+// have their lyrics included when a package is built.
+export let modifiedHymns = new Set();
+
+export function markHymnModified(folder, file) {
+    modifiedHymns.add(`${folder}|${file}`);
+}
+
+export function isHymnModified(folder, file) {
+    return modifiedHymns.has(`${folder}|${file}`);
+}
+
 export function setMassImageBuffer(value) {
     massImageBuffer = value;
 }
@@ -53,6 +65,10 @@ export async function updateHymnLyrics(hymn, newLyrics) {
     // Keep the in-memory search library in sync
     const libEntry = searchLibrary.find(h => h.folder === hymn.folder && h.file === hymn.file);
     if (libEntry) libEntry.lyrics = newLyrics;
+
+    // Remember that this hymn's lyrics were modified so they are
+    // included when a package is built.
+    markHymnModified(hymn.folder, hymn.file);
 
     return entry;
 }

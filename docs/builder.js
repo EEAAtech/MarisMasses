@@ -383,7 +383,8 @@ async function buildPackage() {
                 return { type: "response", title: item.title, text: item.text };
             }
             const hymn = { type: "hymn", folder: item.folder, file: item.file };
-            if (item.folder === "OtherHymns") {
+            // Only include lyrics for hymns that have been edited.
+            if (DataMgr.isHymnModified(item.folder, item.file)) {
                 hymn.lyrics = DataMgr.getLyrics(item.folder, item.file);
             }
             return hymn;
