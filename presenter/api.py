@@ -685,8 +685,8 @@ async def download_package():
         if item.get("type") != "hymn":
             continue
 
-        """ if item.get("folder") != "OtherHymns":
-            continue """
+        if item.get("folder") != "OtherHymns":
+            continue 
 
         lyrics = item.get("lyrics")
 
