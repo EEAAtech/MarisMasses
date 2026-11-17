@@ -364,6 +364,22 @@ function addResponse() {
 //
 // Build and Upload
 //
+// Upload a hymn node (type, folder, file and lyrics) as an independent JSON
+// file in the "package" folder of the public repo. Its structure matches the
+// hymn node structure used in the sequence json files. This keeps hymn lyrics
+// out of the sequence file itself.
+async function uploadHymnJsonNode(hymnNode) {
+    const baseName = hymnNode.file.replace(/\.md$/i, "");
+    const filename = `hymn_${hymnNode.folder}_${baseName}.json`;
+    const path = `${GITHUB_CONFIG.PUBLIC_PACKAGE_FOLDER}/${filename}`;
+    await API.uploadTextFile(
+        path,
+        JSON.stringify(hymnNode, null, 4),
+        `Upload hymn: ${hymnNode.file}`,
+        GITHUB_CONFIG.PUBLIC_REPO_NAME
+    );
+}
+
 async function buildPackage() {
     UI.setProcessingState(true);
     const massDate = document.getElementById("massDate").value;
@@ -375,6 +391,7 @@ async function buildPackage() {
         return;
     }
 
+    const hymnUploads = [];
     const packageObject = {
         massDate: massDate,
         massTime: massTime,
@@ -383,15 +400,25 @@ async function buildPackage() {
                 return { type: "response", title: item.title, text: item.text };
             }
             const hymn = { type: "hymn", folder: item.folder, file: item.file };
-            // Only include lyrics for hymns that have been edited.
+            // Lyrics are no longer embedded in the sequence file. For hymns
+            // whose lyrics have been modified, the hymn node (including the
+            // lyrics) is uploaded as an independent JSON file to the package
+            // folder of the public repo.
             if (DataMgr.isHymnModified(item.folder, item.file)) {
-                hymn.lyrics = DataMgr.getLyrics(item.folder, item.file);
+                const hymnNode = {
+                    type: "hymn",
+                    folder: item.folder,
+                    file: item.file,
+                    lyrics: DataMgr.getLyrics(item.folder, item.file)
+                };
+                hymnUploads.push(uploadHymnJsonNode(hymnNode));
             }
             return hymn;
         })
     };
 
     try {
+        await Promise.all(hymnUploads);
         const uploaded = await uploadPackage(packageObject);
         if (uploaded) alert("Mass sequence uploaded successfully.");
     }
@@ -535,6 +562,9 @@ async function saveNewHymn() {
 
     try {
         await API.uploadTextFile(`OtherHymns/${file}`, lyrics, `Added hymn: ${title}`);
+        // Upload the hymn node (including the lyrics) as an independent JSON
+        // file to the package folder of the public repo.
+        await uploadHymnJsonNode({ type: "hymn", folder: "OtherHymns", file, lyrics });
         alert("Hymn uploaded successfully.");
 
         const entry = { title, folder: "OtherHymns", file, lyrics };
