@@ -1,0 +1,46 @@
+{
+    "massDate": "2026-11-20",
+    "massTime": "18:00",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.114_we_have_come_into_his_house.md"
+        },
+        {
+            "type": "response",
+            "title": "Psalm",
+            "text": "How sweet is your promise to my tongue, O Lord"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "b.36_abba,_father,_let_us_be_yours.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "d.102_taste_and_see.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "c.61_worship,_glory_praise_and_honour.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "c.17_i_will_sing_to_my_god.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "q.04_it's_up_to_me.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "m.05_sing,_my_tongue.md"
+        }
+    ]
+}
