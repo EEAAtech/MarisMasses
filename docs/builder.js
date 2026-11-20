@@ -399,26 +399,12 @@ async function buildPackage() {
             if (item.type === "response") {
                 return { type: "response", title: item.title, text: item.text };
             }
-            const hymn = { type: "hymn", folder: item.folder, file: item.file };
-            // Lyrics are no longer embedded in the sequence file. For hymns
-            // whose lyrics have been modified, the hymn node (including the
-            // lyrics) is uploaded as an independent JSON file to the package
-            // folder of the public repo.
-            if (DataMgr.isHymnModified(item.folder, item.file)) {
-                const hymnNode = {
-                    type: "hymn",
-                    folder: item.folder,
-                    file: item.file,
-                    lyrics: DataMgr.getLyrics(item.folder, item.file)
-                };
-                hymnUploads.push(uploadHymnJsonNode(hymnNode));
-            }
-            return hymn;
+            return { type: "hymn", folder: item.folder, file: item.file };
+            
         })
     };
 
     try {
-        await Promise.all(hymnUploads);
         const uploaded = await uploadPackage(packageObject);
         if (uploaded) alert("Mass sequence uploaded successfully.");
     }
