@@ -70,6 +70,41 @@ async def github_get(path: str):
     return response.json()
 
 
+async def github_file_exists(path: str) -> bool:
+
+    url = f"{GITHUB_API_BASE}/contents/{path}"
+
+    headers = {
+        "Accept": "application/vnd.github+json"
+    }
+
+    async with httpx.AsyncClient() as client:
+
+        response = await client.get(
+            url,
+            headers=headers,
+            params={
+                "ref": GITHUB_BRANCH
+            }
+        )
+
+    if response.status_code == 200:
+
+        return True
+
+    if response.status_code == 404:
+
+        return False
+
+    raise HTTPException(
+        status_code=502,
+        detail=(
+            "GitHub request failed: "
+            f"{response.status_code}"
+        )
+    )
+
+
 async def github_put(
     path: str,
     content: str,
@@ -667,50 +702,109 @@ async def download_package():
 
     
     #
-    # 8. Install OtherHymns embedded in the package.
+    # 8. Install hymn files from the package folder.
     #
-    items_dir = (
-        PACKAGE_DIR /
-        "items" /
-        "OtherHymns"
+    # Hymn files are named "hymn_[Folder]_[hymn name].json" and live
+    # in the package folder on GitHub. Each one is turned into a
+    # markdown file in package/items/OtherHymns, the local copy is
+    # removed, and the original file on GitHub is moved to the
+    # Hymn_Archive subfolder (versioned if it already exists there).
+    #
+    HYMN_FILENAME_PATTERN = re.compile(
+        r"^hymn_.*\.json$"
     )
 
-    items_dir.mkdir(
-        parents=True,
-        exist_ok=True
-    )
+    hymn_files = [
 
-    for item in package["items"]:
+        file
 
-        if item.get("type") != "hymn":
-            continue
+        for file in package_files
 
-        if item.get("folder") != "OtherHymns":
-            continue 
-
-        lyrics = item.get("lyrics")
-
-        if lyrics is None:
-            raise HTTPException(
-
-                status_code=500,
-
-                detail=(
-                    f"OtherHymns item "
-                    f"{item['file']} has no lyrics."
-                )
-
-            )
-
-        hymn_path = (
-            items_dir /
-            item["file"]
+        if HYMN_FILENAME_PATTERN.match(
+            file.get("name", "")
         )
 
-        hymn_path.write_text(
+    ]
+
+    for hymn_file in hymn_files:
+
+        hymn_name = hymn_file["name"]
+
+        # Download the hymn JSON and keep a local copy while it is
+        # being processed.
+        hymn_data = await github_get(hymn_file["path"])
+
+        hymn_content = base64.b64decode(
+            hymn_data["content"].replace("\\n", "")
+        ).decode("utf-8")
+
+        hymn = json.loads(hymn_content)
+
+        lyrics = hymn.get("lyrics")
+        folder = hymn.get("folder")
+
+        if lyrics is None:
+
+            continue
+
+        # Convert literal "\n" sequences into real newlines so the
+        # lyrics are stored in the markdown file on multiple lines.
+        lyrics = lyrics.replace("\\n", "\n")
+
+        md_filename = hymn.get("file") or (
+            hymn_name.removeprefix("hymn_").removeprefix(folder + "_").removesuffix(".json")
+            + ".md"
+        )
+
+        md_path = (
+            PACKAGE_DIR /
+            "items" /
+            folder /
+            md_filename
+        )
+
+        md_path.parent.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+        md_path.write_text(
             lyrics,
             encoding="utf-8"
         )
+
+        #
+        # Move the hymn json file on GitHub to the Hymn_Archive
+        # subfolder. If a file with the same name is already
+        # archived, save this as a new version.
+        #
+        archive_dir = f"{GITHUB_PACKAGE_PATH}/Hymn_Archive"
+        archive_stem = Path(hymn_name).stem
+        archive_suffix = Path(hymn_name).suffix
+        archive_name = hymn_name
+        version = 2
+
+        while await github_file_exists(
+            f"{archive_dir}/{archive_name}"
+        ):
+
+            archive_name = f"{archive_stem}_v{version}{archive_suffix}"
+            version += 1
+
+        await github_put(
+            f"{archive_dir}/{archive_name}",
+            hymn_content,
+            f"Archive hymn file {hymn_name}",
+        )
+
+        await github_delete(
+            hymn_file["path"],
+            hymn_file["sha"],
+            f"Archive hymn file {hymn_name}",
+        )
+
+
+ 
 
     #
     # 9. Install sequence.json locally.
@@ -732,7 +826,7 @@ async def download_package():
     )
 
     #
-    # 10. Reset presentation state.
+    # 11. Reset presentation state.
     #
     state_manager.state.currentItemIndex = 0
     state_manager.state.currentSlideIndex = 0
