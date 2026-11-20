@@ -1,0 +1,56 @@
+{
+    "massDate": "2026-11-17",
+    "massTime": "16:00",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.122_come_and_go_with_me.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "kyrie_latin.md"
+        },
+        {
+            "type": "response",
+            "title": "Ps27",
+            "text": "The Lord is my light and my salvation"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.061_alleluia.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "b.20_humbly_we_come.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "holy_dans.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "prod_save_us_savior.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "d.089_to_be_the_body_of_the_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "g.52_you_be_my_light,_o_lord.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "devachea_bhagivontano.md"
+        }
+    ]
+}
