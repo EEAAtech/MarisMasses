@@ -1,5 +1,5 @@
 import { loadGitHubJson, uploadTextFile } from './api.js';
-import { GITHUB_CONFIG } from './config.js';
+import { uploadHymnJsonNode } from './builder.js';
 
 export let searchLibrary = [];
 export let sequence = [];
@@ -73,20 +73,12 @@ export async function updateHymnLyrics(hymn, newLyrics) {
 
     // Upload the hymn node (including the lyrics) as an independent JSON
     // file to the package folder of the public repo.
-    const baseName = hymn.file.replace(/\.md$/i, "");
-    const hymnNode = {
+    await uploadHymnJsonNode({
         type: "hymn",
         folder: hymn.folder,
         file: hymn.file,
         lyrics: newLyrics
-    };
-    const path = `${GITHUB_CONFIG.PUBLIC_PACKAGE_FOLDER}/hymn_${hymn.folder}_${baseName}.json`;
-    await uploadTextFile(
-        path,
-        JSON.stringify(hymnNode, null, 4),
-        `Upload hymn: ${hymn.file}`,
-        GITHUB_CONFIG.PUBLIC_REPO_NAME
-    );
+    });
 
     return entry;
 }

@@ -368,7 +368,7 @@ function addResponse() {
 // file in the "package" folder of the public repo. Its structure matches the
 // hymn node structure used in the sequence json files. This keeps hymn lyrics
 // out of the sequence file itself.
-async function uploadHymnJsonNode(hymnNode) {
+export async function uploadHymnJsonNode(hymnNode) {
     const baseName = hymnNode.file.replace(/\.md$/i, "");
     const filename = `hymn_${hymnNode.folder}_${baseName}.json`;
     const path = `${GITHUB_CONFIG.PUBLIC_PACKAGE_FOLDER}/${filename}`;
