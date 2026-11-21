@@ -1,0 +1,61 @@
+{
+    "massDate": "2026-11-21",
+    "massTime": "18:31",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.041_the_king_of_glory.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "lord_have_mercy.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "gloria_dan_shute.md"
+        },
+        {
+            "type": "response",
+            "title": "Psalm",
+            "text": "The Lord is my Shepherd; there is nothing I shall want"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "066._alleluia,_alleluia,_alleluia!.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "b.28_offering.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "holy_from_juhu_church.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "proc_save_us_savior.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "lamb_of_god.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "d.043_the_lord_is_my_shepherd.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "c.61_worship,_glory_praise_and_honour.md"
+        }
+    ]
+}
