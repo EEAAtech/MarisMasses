@@ -1,0 +1,71 @@
+{
+    "massDate": "2026-11-21",
+    "massTime": "17:00",
+    "items": [
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "a.114_we_have_come_into_his_house.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "the_lord_hears_the_cry_of_the_poor.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "al.37_melchizedech_alleluia.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "father_i_thank_you_for_your_goodness.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "010._jesus,_my_lord,_my_god.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "PTL",
+            "file": "224._we_are_gathering_together.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "kyrie_latin.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "holy_dans.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "proc_save_us_savior.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "devachea_bhagivontano.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "x.28_ring_out_your_joy.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "OtherHymns",
+            "file": "gloria_glory_to_god_in_the_highest.md"
+        },
+        {
+            "type": "hymn",
+            "folder": "WJL",
+            "file": "x.19_go,_the_mass_is_ended.md"
+        }
+    ]
+}
